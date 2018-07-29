@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>图片上滑动的文字</title>
+	<style rel="stylesheet" href="/jquery.mobile-1.4.5/jquery.mobile-1.4.5.css"></style>
+	<style type="text/css">
+	    *, div, ul, li, p{margin:0;padding:0}
+		img{width:300px;}
+		div{
+		    float:left;
+			margin:20px 20px;
+			position:relative;
+			overflow:hidden;
+			line-height:0;
+		}
+		p{
+		    position:absolute;
+			top:380px;
+			background:rgba(51, 51, 51, 0.5);
+			height:100%;
+			text-align:justify;
+			padding:0 5px;
+			color:white;
+			line-height:1.5;
+			transition:all 2s;
+		}
+		div:hover p {
+		    top:0px;
+		}
+	</style>
+</head>
+<body>
+    <div><img src="images/1.jpg" /><p>Red-eyed tree frogs, as their name states, have bold red eyes with vertically narrowed pupils,</p></div>
+    <div><img src="images/2.jpg" /><p>a vibrant green body with yellow and blue striped sides, and orange toes. There is a great deal of regional variation in flank and thigh coloration.</p></div>
+    <div><img src="images/3.jpg" /><p>There is a great deal of regional variation in flank and thigh coloration.</p></div>
+</body>
+</html>

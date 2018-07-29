@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		
+		html,body{height:100%;}
+		body{overflow:hidden;}
+		div.part{
+		    width:100%;height:100%;background:#fcc;position:relative;background-position:center;background-size:cover;
+			background-attachment:fixed;
+		}
+		div.part1{
+		    background-image:url(images/1.jpg);
+			background-position:center;background-size:cover;
+		}
+		div.logo{
+		    width:200px;height:61px;background-image:url(images/logo.png);
+			background-size:100%;background-repeat:no-repeat;
+			position:absolute;left:30px;top:30px;
+		}
+		div.part1 p{
+		    width:100%;height:36px;background-color:#d97f5c;position:absolute;bottom:0;
+			line-height:36px;text-align:center;color:#fff;font-weight:bold;
+		}	
+		div.part1 div.p1-1{
+		    width:640px;height:260px;background-image:url(images/1-2.png);background-size:100% 100%;
+			position:absolute;top:50%;left:50%;margin-left:-320px;margin-top:-130px;
+		}
+		
+		div.part2{
+		    background-color:#d97f5c;
+		}
+		div.part2 div.p1-1{
+		    width:620px;height:500px;background-image:url(images/2-2.png);background-size:100% 100%;
+			position:absolute;top:50%;left:50%;margin-left:-310px;margin-top:-250px;
+		}
+		
+		div.part3{
+		    background-image:url(images/3.jpg);
+		}
+		div.part3 div.p1-1,div.part4 div.p1-1,div.part5 div.p1-1,div.part6 div.p1-1,div.part7 div.p1-1{
+		    width:620px;height:500px;background-image:url(images/3-2.png);background-size:100% 100%;
+			position:absolute;top:50%;left:50%;margin-left:-310px;margin-top:-250px;
+		}
+		div.part4{
+		    background-image:url(images/4.jpg);
+		}
+		div.part4 div.p1-1{background-image:url(images/4-2.png); }
+		div.part5 div.p1-1{background-image:url(images/5-2.png); }
+		div.part6 div.p1-1{background-image:url(images/6-2.png); }
+		div.part7 div.p1-1{background-image:url(images/7-2.png); }
+		div.part5{
+		    background-image:url(images/5.jpg);
+		}
+		div.part6{
+		    background-image:url(images/6.jpg);
+		}
+		div.part7{
+		    background-image:url(images/7.jpg);
+		}
+		
+		div#but{
+		    width:25px;height:180px;border-radius:10px;
+			position:fixed;top:50%;left:30px;margin-top:-90px;
+		}
+		#but ul li{
+		    width:14px;height:14px;border:3px solid #fff;border-radius:100%;margin:5px auto;
+			box-shadow:0 0 10px black;background:#666;cursor:pointer;transition:0.4s;
+		}
+		#but ul li.current{
+		    background:red;box-shadow:0 0 10px red;
+		}
+	</style>
+</head>
+<body>
+    <div class='part part1'>
+	    <div class='logo'></div>
+		<div class='p1-1'></div>
+		<p>什么是厅客?</p>
+	</div>
+	
+	
+    <div class='part part2'>
+	    <div class='logo'></div>
+		<div class='p1-1'></div>
+		<p>什么是厅客?</p>
+	</div>
+	
+    <div class='part part3'>
+	    <div class='logo'></div>
+		<div class='p1-1'></div>
+		<p></p>
+	</div>
+    <div class='part part4'>
+	    <div class='logo'></div>
+		<div class='p1-1'></div>
+		<p></p>
+	</div>
+    <div class='part part5'>
+	    <div class='logo'></div>
+		<div class='p1-1'></div>
+		<p></p>
+	</div>
+    <div class='part part6'>
+	    <div class='logo'></div>
+		<div class='p1-1'></div>
+		<p></p>
+	</div>
+    <div class='part part7'>
+	    <div class='logo'></div>
+		<div class='p1-1'></div>
+		<p></p>
+	</div>
+	<div id='but'>
+	    <ul>
+		    <li class='current'></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		</ul>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery.mousewheel.min.js"></script>
+	<script>
+	    $(function() {
+		    var lastTime = new Date();
+		    height = $(window).height();
+			$(document).scrollTop(0);
+		    $('#but ul li').click(function() {
+			    var index = $(this).index();
+				moveToX(index);
+			});
+			$(window).resize(function() {
+			    height = $(window).height();
+			});
+			
+			$(document).mousewheel(function(ev, dl) {
+			    if(new Date() - lastTime < 500){
+				    return;
+				}
+				lastTime = new Date();
+				var index = $('#but ul li.current').index();
+				if(dl < 0){
+					index++;
+				} else {
+					index--;
+				}
+				index = (index + $('#but ul li').length) % $('#but ul li').length;
+				moveToX(index);
+			});
+		});
+		
+		function moveToX(index) {
+		    $('#but ul li').eq(index).addClass('current').siblings().removeClass('current');
+			var con = $('body > div').eq(index);
+			con.find('div.p1-1').css({left: '-' + con.find('div.p1-1').width() + 'px'})
+			$(document.body).stop(true).animate({'scrollTop': height * index + 'px'}, 500, function() {
+				con.find('div.p1-1').animate({left:'50%'}, 300);
+			});
+		}
+	</script>
+</body>
+</html>

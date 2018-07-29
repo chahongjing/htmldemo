@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;display:block;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		body{}
+		
+		.main{margin:30px auto;width:900px;}
+		.content{width:200px;height:260px;position:relative;overflow:hidden;margin:10px;display:inline-block;}
+		.content .mask,.content .hover{background-color:rgba(0,0,0,.2);width:100%;height:100%;position:absolute;
+		    left:-10000px;top:-10000px;}
+		.content .hover{background-color:rgba(0,0,0,0);left:0;top:0;}
+	</style>
+</head>
+<body>
+    <div class='main'>
+		<ul>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+			<li class='content'>
+				<img src='images/7.jpg' />
+				<div class='mask'></div>
+				<div class='hover'></div>
+			</li>
+		</ul>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+		
+		$('.hover').mouseenter(function(e) {
+		    e = e || window.event;
+			
+			var mouseX = e.pageX;
+			var mouseY = e.pageY;
+			
+			var content =  $(this).closest('.content')[0];
+			var cTop = content.offsetTop;
+			var cLleft = content.offsetLeft;
+			var cBottom = cTop + content.clientHeight;
+			var cRight = cLleft + content.clientWidth;
+		
+			var mTop = Math.abs(cTop - mouseY);
+			var mBottom = Math.abs(cBottom - mouseY);
+			var mLeft = Math.abs(cLleft - mouseX);
+			var mRight = Math.abs(cRight - mouseX);
+			
+			var min = Math.min(mTop, mBottom, mLeft, mRight);
+			
+			switch(min) {
+			    case mTop:
+				    $(content).find('.mask').css({left:0 + 'px',top:(-content.clientHeight) + 'px'});
+					$(content).find('.mask').stop(true).animate({top: 0}, 500);
+				    break;
+			    case mBottom:
+				    $(content).find('.mask').css({left:0 + 'px',top:(content.clientHeight) + 'px'});
+					$(content).find('.mask').stop(true).animate({top: 0}, 500);
+				    break;
+			    case mLeft: 
+				    $(content).find('.mask').css({top:0 + 'px',left:(-content.clientHeight) + 'px'});
+					$(content).find('.mask').stop(true).animate({left: 0}, 500);
+				    break;
+			    case mRight:
+				    $(content).find('.mask').css({top:0 + 'px',left:(content.clientHeight) + 'px'});
+					$(content).find('.mask').stop(true).animate({left: 0}, 500);
+				    break;
+				default: break;
+			}
+		});
+		$('.hover').mouseout(function(e) {
+		    e = e || window.event;
+			
+			var mouseX = e.pageX;
+			var mouseY = e.pageY;
+			
+			var content =  $(this).closest('.content')[0];
+			var cTop = content.offsetTop;
+			var cLleft = content.offsetLeft;
+			var cBottom = cTop + content.clientHeight;
+			var cRight = cLleft + content.clientWidth;
+		
+			var mTop = Math.abs(cTop - mouseY);
+			var mBottom = Math.abs(cBottom - mouseY);
+			var mLeft = Math.abs(cLleft - mouseX);
+			var mRight = Math.abs(cRight - mouseX);
+			
+			var min = Math.min(mTop, mBottom, mLeft, mRight);
+			
+			switch(min) {
+			    case mTop:
+					$(content).find('.mask').stop(true).animate({left:0 + 'px',top:(- content.clientHeight) + 'px'}, 500);
+				    break;
+			    case mBottom:
+					$(content).find('.mask').stop(true).animate({left:0 + 'px',top:(content.clientHeight) + 'px'}, 500);
+				    break;
+			    case mLeft: 
+				    //$(content).find('.mask').css({top:0 + 'px',left:(-content.clientHeight) + 'px'});
+					$(content).find('.mask').stop(true).animate({top:0 + 'px',left:(-content.clientHeight) + 'px'}, 500);
+				    break;
+			    case mRight:
+					$(content).find('.mask').stop(true).animate({top:0 + 'px',left:(content.clientHeight) + 'px'}, 500);
+				    //$(content).find('.mask').css({top:0 + 'px',left:(content.clientHeight) + 'px'});
+				    break;
+				default: break;
+			}
+		});
+	</script>
+</body>
+</html>

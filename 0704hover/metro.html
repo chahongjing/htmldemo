@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>metro图示</title>
+	<style type="text/css">
+	    *, div, ul, li{margin:0;padding:0}
+		div{
+		    width:835px;
+			margin:auto;
+		}
+	    li{margin:0px;width:270px;height:270px;
+		   list-style:none;
+		   display:inline-block;
+		   border:1px solid black;
+		   margin:2px;
+		   padding:0px;
+		   float:left;
+		   background:rgba(0,0,0,.3);
+		   transition:background 0.6s;
+		   position:relative;
+		}
+		li > img{
+			position:absolute;
+			top:70px;
+			left:80px;
+		}
+		.over{
+		    display:none;
+		}
+		li:hover{
+		    background:#fecc5d;
+			color:#fff;
+		}
+		li:hover span{
+			color:#fff;
+			margin-left:0;
+		}
+		li:hover .over{
+		    display:block;
+		}
+		li:hover .show{
+		    display:none;
+			margin:auto auto;
+		}
+		li span{
+		    position:absolute;bottom:0;
+		}
+		li span.fright{
+		    left:auto;
+		    right:0;
+		}
+	</style>
+</head>
+<body>
+	<div>
+	    <ul>
+		    <li><img class="show" src="images/splash_icon1.png" />
+			<img class="over" src="images/splash_icon1_over.png" />
+			   <span>Home</span><span class="fright">01</span>
+			</li>
+		    <li><img class="show" src="images/splash_icon2.png" />
+			<img class="over" src="images/splash_icon2_over.png" />
+			   <span>About</span><span class="fright">02</span>
+			</li>
+		    <li><img class="show" src="images/splash_icon3.png" />
+			<img class="over" src="images/splash_icon3_over.png" />
+			   <span>Love</span><span class="fright">03</span>
+			</li>
+		    <li><img class="show" src="images/splash_icon4.png" />
+			<img class="over" src="images/splash_icon4_over.png" />
+			   <span>Picture</span><span class="fright">04</span>
+			</li>
+		    <li><img class="show" src="images/splash_icon5.png" />
+			<img class="over" src="images/splash_icon5_over.png" />
+			   <span>Blog</span><span class="fright">05</span>
+			</li>
+		    <li><img class="show" src="images/splash_icon6.png" />
+			<img class="over" src="images/splash_icon6_over.png" />
+			   <span>Love</span><span class="fright">06</span>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
