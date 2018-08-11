@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background-color:#0c9;color:#333;}
+		
+		.content{
+		    padding-top:20%;
+		}
+		.content .select{
+		    width:300px;height:40px;margin:0 auto;font-family:"Microsoft YaHei";
+			font-size:16px;background-color:#fff;position:relative;
+		}
+		.content .select > i{
+		    position:absolute;top:13px;right:10px;width:20px;height:11px;
+			border-top:2px #ccc solid;border-bottom:2px #ccc solid;cursor:pointer;
+		}
+		.content .select >i:after{
+		    content: '';position:absolute;top:4px;left:0;width:100%;height:2px;
+			background:#ccc;
+		}
+		.content .select p{
+		    padding:0 15px;line-height:40px;cursor:pointer;
+		}
+		.content .select ul{
+		    list-style-type:none;position:absolute;top:20px;left:0;z-index:1;
+			background-color:#fff;width:100%;overflow:hidden;height:0;
+			transition:height 0.3s ease-out, top 0.3s ease-out;
+		}
+		.content .select ul li{
+		    padding:0 15px;line-height:40px;cursor:pointer;opacity:0;
+			transform:translateX(300px);transition:transform 0.3s ease-out;
+		}
+		.content .select ul li:hover{
+		    background-color:#e0e0e0;
+		}
+		.content .select ul li.selected{
+		    color:#0c9;
+		}
+		.content .select.open ul{
+		    height:200px;top:-80px;transition:0.3s ease-in;
+		}
+		.content .select.open ul li{
+		    opacity:1;transform:translateX(0);
+		}
+		.content .select.open ul li:nth-child(1){
+		    transition:opacity 0.3s ease-in 0.05s, transform 0.3s ease-in 0.05s;
+		}
+		.content .select.open ul li:nth-child(2){
+		    transition:opacity 0.3s ease-in 0.1s, transform 0.3s ease-in 0.1s;
+		}
+		.content .select.open ul li:nth-child(3){
+		    transition:opacity 0.3s ease-in 0.15s, transform 0.3s ease-in 0.15s;
+		}
+		.content .select.open ul li:nth-child(4){
+		    transition:opacity 0.3s ease-in 0.2s, transform 0.3s ease-in 0.2s;
+		}
+		.content .select.open ul li:nth-child(5){
+		    transition:opacity 0.3s ease-in 0.25s, transform 0.3s ease-in 0.25s;
+		}
+	</style>
+</head>
+<body>
+    <div id='' class='content'>
+	    <div class='select'>
+		    <input type='hidden' name='selName' value=''>
+		    <p>所有选项</p>
+			<i></i>
+			<ul>
+			    <li data-value='' class='selected'>所有选项</li>
+			    <li data-value='html'>html</li>
+			    <li data-value='css'>css</li>
+			    <li data-value='js'>js</li>
+			    <li data-value='jq'>jq</li>
+			</ul>
+		</div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    $('.select > p, .select > i').on('click', function() {
+			    $('.select').toggleClass('open');
+				return false;
+			});
+		    $('.select ul li').on('click', function() {
+			    var $this = $(this);
+				$this.addClass('selected').siblings().removeClass('selected');
+				$('.select').removeClass('open');
+			    $('.select > p').text($this.text());
+				$this.closest('ul').siblings('input').val($this.data('value'));
+				return false;
+			});
+			$(document).on('click', function() {
+			    $('.select').removeClass('open');
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		
+		body{background:url(images/bg.jpg) center;}
+		#banner{
+		    width:730px;height:390px;margin:100px auto 0;
+			background:url(images/1.png);border-radius:10px;
+			box-shadow:0 0 10px white;
+		}
+		#btn{
+		    width:55px;height:280px;position:fixed;top:150px;right:30px;
+		}
+		#btn ul li{
+		    width:55px;height:55px;margin:10px 0;background-image:url(images/icon.jpg);
+			border-radius:100%;
+		}
+	</style>
+</head>
+<body>
+    <div id='banner'>
+	
+	</div>
+	<div id='btn'>
+		<ul>
+		    <li class='on' style='background-position-x:-80px;'></li>
+		    <li style='background-position-y:-70px'></li>
+		    <li style='background-position-y:-140px'></li>
+		    <li style='background-position-y:-210px'></li>
+		</ul>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    sh = setInterval(nextX, 3000);
+		    $('#btn ul li').click(function() {
+			    clearInterval(sh);
+			    clickX($(this).index());
+				sh = setInterval(nextX, 3000);
+			});
+		});
+		
+		function nextX() {
+		    var index = $('#btn ul li.on').index();
+			index = (index + 1) % $('#btn ul li').length;
+		    clickX(index);
+		}
+		
+		function clickX(index) {
+		    var $this = $('#btn ul li').eq(index);
+			$this.addClass('on').siblings().removeClass('on');
+		    $this.stop(true).animate({'background-position-x': '-80px'}, 200).siblings().stop(true).animate({'background-position-x': '0px'}, 0);
+			$('#banner').stop(true).animate({'background-position-y': '-' + index * 390 + 'px'}, 200);
+		}
+	</script>
+</body>
+</html>

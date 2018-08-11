@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		body{background:url(images/bodyBg.jpg);}
+		#con{width:1000px;height:650px;margin:50px auto;}
+		
+		#con .conL{
+		    width:750px;height:600px;float:left;
+		}
+		#con .conR{
+		    width:250px;height:600px;background:rgba(0,0,0,0.5);float:right;
+		}
+		#con .divPlayer{
+		    height:50px;background:#444;clear:both;
+		}
+		#con .conR dl{width:136px;height:180px;margin:50px auto 20px;border-bottom:1px dotted #ddd;}
+		#con .conR dl dt{width:136px;height:136px;}
+		#con .conR dl dt img {border-radius:3px;}
+		#con .conR dl dd{
+		    width:136px;height:45px;font-size:14px;color:#fff;text-align:center;
+			line-height:45px;
+		}
+		#con .conR .txt{
+		    width:250px;height:340px;overflow-y:scroll;
+		}
+		#con .conR .txt p{height:25px;color:#ddd;text-align:center;line-height:25px;letter-spacing:1px;}
+		#gc, audio{display:none;transition:0.3s;}
+		
+		#con .conR .txt p.current{color:red;}
+		#con .conR .txt p.passed{color:#999;}
+		
+		.divPlayer ul li{width:30px;text-align:center;height:50px;line-height:50px;
+			float:left;background:url(images/sm_icon.png) no-repeat;
+			margin-left:10px;cursor:pointer;}
+		.divPlayer .controlLeft{margin-left:100px;width:170px;display:inline-block;}
+		.divPlayer ul li.playerLeft{background-position:-46px 14px;}
+		.divPlayer ul li.playerPlay{width:23px;background-position:-76px;}
+		.divPlayer ul li.playerRight{background-position:-122px 14px;}
+		.divPlayer ul li.playerPause{width:23px;background-position:-98px;}
+		
+		.divPlayer .controlRight{width:600px;height:50px;line-height:50px;display:inline-block;position:relative;}
+		.process, .timeLine{width:100%;height:4px;border-radius:3px;background:#606060;border:1px solid #333;
+		    line-height:50px;margin-top:-3px;position:absolute;left:0;top:50%;}
+		.timeLine {width:20%;background:#216DA4;transition:0.05s;}
+		.timeLine span{display:block;width:11px;height:11px;background:#ddd;float:right;border-radius:100%;
+		    margin-top:-4px;box-shadow:0 0 10px black;}
+	</style>
+</head>
+<body>
+    <div id='con'>
+	    <div class='conL'>
+		    <img src='images/music.gif' width='750' height='600' />
+		</div>
+		
+		<div class='conR'>
+		    <dl>
+			    <dt><img src='images/2.jpg' width='136' height='136' /></dt>
+				<dd>《梦的翅膀受了伤》</dd>
+			</dl>
+			
+			<div class='txt'>
+			</div>
+		</div>
+		<div class='divPlayer'>
+		    <div class='controlLeft'>
+			    <ul>
+				    <li class='playerLeft'></li>
+				    <li class='playerPause'></li>
+				    <li class='playerRight'></li>
+				</ul>
+			</div>
+			<div class='controlRight'>
+			    <div class='process'></div>
+				<div class='timeLine'><span></span></div>
+			</div>
+		</div>
+	</div>
+	
+	<div id='gc'>
+		[00:02.00]梦的翅膀受了伤
+		[00:05.44]演唱：孙露 
+		[00:08.11]
+		[00:34.31]隐隐坠下季节的落叶
+		[00:40.57]阵阵秋风吹得好凄凉
+		[00:46.92]我的忧伤飘散在远方
+		[00:53.22]没有你我感觉好孤单
+		[00:57.80]
+		[00:59.58]思念已经化成了眼泪
+		[01:05.79]一滴一滴刺痛我的心
+		[01:12.15]梦的翅膀已经受了伤
+		[01:18.47]我飞不到有你的地方
+		[01:22.78]
+		[01:24.95]每次想你我都会心痛
+		[01:30.54]我的思念转过寂静的天空
+		[01:37.38]我的记忆里有你的痕迹
+		[01:43.81]我的爱在寂寞世界里
+		[01:47.65]
+		[01:50.11]天空飘过流浪的白云
+		[01:55.65]就像我们已经破碎的爱情
+		[02:02.66]爱得太累心已憔悴
+		[02:09.04]让风吹干受伤的眼泪
+		[02:13.15]
+		[02:40.59]思念已经化成了眼泪
+		[02:46.91]一滴一滴刺痛我的心
+		[02:53.25]梦的翅膀已经受了伤
+		[02:59.52]我飞不到有你的地方
+		[03:03.75]
+		[03:05.86]每次想你我都会心痛
+		[03:11.59]我的思念转过寂静的天空
+		[03:18.52]我的记忆里有你的痕迹
+		[03:24.85]我的爱在寂寞世界里
+		[03:28.66]
+		[03:31.17]天空飘过流浪的白云
+		[03:36.78]就像我们已经破碎的爱情
+		[03:43.83]爱得太累心已憔悴
+		[03:50.05]让风吹干受伤的眼泪
+		[03:54.10]
+		[03:56.39]让风吹干受伤的眼泪
+		[04:00.63]
+		[04:02.84]让风吹干受伤的眼泪
+		[04:12.98]
+	</div>
+	<audio id='musicPlayer' src='music/梦的翅膀受了伤.mp3' controls></audio>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    var arr = $('#gc').text().split('[');
+			var html = '';
+			$.each(arr, function(i, value) {
+			    var arrIn = value.split(']');
+				var arrTime1 = arrIn[0].split('.');
+				var arrTime2 = arrIn[0].split(':');
+				var time = parseInt(arrTime2[0] || 0) * 60 + parseInt(arrTime2[1] || 0);
+				if(time) {
+					html += '<p id="lrc' + time + '">' + (arrIn[1] || '') + '</p>';
+				}
+			});
+			$('div.txt').html(html);
+			var musicPlayer = document.getElementById('musicPlayer');
+			musicPlayer.play();
+			musicPlayer.addEventListener('timeupdate', function() {
+				var time = parseInt(this.currentTime) + 1;
+				
+				$('.timeLine').css('width', parseInt(time * 100.0) / this.duration + '%');
+				var p = $('div.txt p#lrc' + time.toString());
+				if(p.length > 0) {
+				   p.addClass('current').prevAll().attr('class', 'passed');
+				}
+			});
+		});
+	</script>
+</body>
+</html>

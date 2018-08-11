@@ -1,0 +1,63 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+<title>一个轮显插件的尝试、思考和扩展 - 上位者的怜悯 - 博客园</title>
+</head>
+<body>
+<!-- 新 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="css/slider.min.css"/>
+
+<div style="margin-bottom: 20px;overflow: hidden;box-shadow: 0 2px 16px #ddd;background-color:#fff;height:360px;">
+<div id="imgBar" style="margin:0 auto;width:1280px;">
+</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/slider.js"></script>
+<script type="text/javascript">
+    $("#imgBar").slider({
+        imgs: [
+            "http://images.cnitblog.com/blog/708426/201501/080209549216360.jpg",
+            "http://images.cnitblog.com/blog/708426/201501/100557406251638.jpg",
+            "http://images.cnitblog.com/blog/708426/201501/100602118284450.jpg"],
+        scale: 128 / 36,
+        border: true,
+        delay: 2200,
+        x: 10,
+        y: 3
+    });
+</script>
+<div class="page-header">
+<h1>效果见页面顶部 <small>或者如下：</small></h1>
+</div>
+<div id="modelSlider">&nbsp;</div>
+<script type="text/javascript">// <![CDATA[
+$("#modelSlider").slider({
+            imgs: [
+                "http://images.cnblogs.com/cnblogs_com/lianmin/713650/o_0f8738e9cfbb9485.png",
+                "http://images.cnblogs.com/cnblogs_com/lianmin/713650/o_89e657a08f9f13f6.png",
+                "http://images.cnblogs.com/cnblogs_com/lianmin/713650/o_884e69c2eb02316b.png",
+                "http://images.cnblogs.com/cnblogs_com/lianmin/713650/o_462506e0ed7b0c25.png",
+                "http://images.cnblogs.com/cnblogs_com/lianmin/713650/o_e5859ff3e6487575.png",
+                "http://images.cnblogs.com/cnblogs_com/lianmin/713650/o_f07bd295f4cdbd7a.png"
+            ],
+            urls: [
+                'javascript:makeDialog("轮显提示或者地址","第1个图",function(){},3)',
+                'javascript:makeDialog("轮显提示或者地址","第2个图",function(){},3)',
+                'javascript:makeDialog("轮显提示或者地址","第3个图",function(){},3)',
+                'javascript:makeDialog("轮显提示或者地址","第4个图",function(){},3)',
+                'javascript:makeDialog("轮显提示或者地址","第5个图",function(){},3)',
+                'javascript:makeDialog("轮显提示或者地址","第6个图",function(){},3)'
+            ],
+            scale: 5 / 2,
+            border: false,
+            showBar: true,
+            x: 4,
+            y: 3
+        });
+// ]]></script>
+
+<!--PageEndHtml Block End-->
+</body>
+</html>

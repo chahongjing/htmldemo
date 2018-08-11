@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background-color:#0c9;color:#333;}
+		
+		.radio-1,.radio-2{
+		    width:300px;margin:0 auto;padding:3% 0;background-color:#3cc;
+			text-align:center;line-height:28px;padding:20px;
+		}
+		.radio-1 [type='radio'],.radio-2 [type='radio']{
+		    display:none;
+		}
+		.radio-1 label,.radio-2 label{cursor:pointer;display:inline-block;position:relative;
+		    line-height:28px;margin-right:10px;}
+		.radio-1 label span,.radio-2 label span{display:inline-block;line-height:30px;margin-left:35px;}
+		.radio-1 label i,.radio-2 label i{
+		    display:inline-block;position:absolute;width:28px;height:28px;
+			border:1px #ccc solid;background-color:#fff;left:0;top:0;
+			cursor:pointer;border-radius:100%;overflow:hidden;
+		}
+		.radio-1 label i:after{
+		    content:'';position:absolute;top:4px;left:4px;width:20px;height:20px;
+			background-color:#666;border-radius:50%;transform:scale(0);-webkit-transform:scale(0);
+			transition:transform 0.2s ease-out;-webkit-transition:-webkit-transform 0.2s ease-out;
+		}
+		.radio-1 [type='radio']:checked + label i {
+		    background-color:#eee;transition:background-color 0.2s ease-in;-webkit-transition:background-color 0.2s ease-in;
+		}
+		.radio-1 [type='radio']:checked + label i:after{
+		    transform:scale(1);-webkit-transform:scale(1);transition:transform 0.2s ease-in;
+		}
+		.radio-1 [type=radio]:disabled + label span{
+		    color:#888;
+		}
+		
+		.radio-2{background-color:#fc9;margin-top:20px;}
+		.radio-2 label i:after{
+		    content:'';position:absolute;top:4px;left:4px;width:20px;height:20px;
+			background-color:#666;border-radius:50%;
+			transform:rotate(-180deg);
+			transform-origin:-2px 50%;
+			transition:transform 0.2s ease-out;display:inline-block;
+			-webkit-transform:rotate(-180deg);
+			-webkit-transform-origin:-2px 50%;
+			-webkit-transition:-webkit-transform 0.2s ease-out;
+		}
+		.radio-2 [type='radio']:checked + label i {
+		    background-color:#eee;transition:background-color 0.2s ease-in;-webkit-transition:background-color 0.2s ease-in;
+		}
+		.radio-2 [type='radio']:checked + label i:after{
+		    transform:scale(1);transition:transform 0.2s ease-in;
+			-webkit-transform:scale(1);-webkit-transition:-webkit-transform 0.2s ease-in;
+		}
+		.radio-2 [type=radio]:disabled + label span{
+		    color:#888;
+		}
+	</style>
+</head>
+<body>
+    <div id='' class='radio-1'>
+	    <input type='radio' name='radio-1' id='radio-1' />
+		<label for='radio-1'><i></i><span>游泳</span></label>
+	    <input type='radio' name='radio-1' id='radio-2' />
+		<label for='radio-2'><i></i><span>看书</span></label>
+	    <input type='radio' name='radio-1' id='radio-3' />
+		<label for='radio-3'><i></i><span>打游戏</span></label>
+	</div>
+    <div id='' class='radio-2'>
+	    <input type='radio' name='radio-2' id='radio-4' />
+		<label for='radio-4'><i></i><span>游泳</span></label>
+	    <input type='radio' name='radio-2' id='radio-5' />
+		<label for='radio-5'><i></i><span>看书</span></label>
+	    <input type='radio' name='radio-2' id='radio-6' />
+		<label for='radio-6'><i></i><span>打游戏</span></label>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		   
+		});
+	</script>
+</body>
+</html>

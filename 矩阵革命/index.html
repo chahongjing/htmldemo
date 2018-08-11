@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{overflow:hidden;}
+		
+		
+	</style>
+</head>
+<body>
+    <canvas id='canvas' class=''>
+	    
+	</canvas>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    var canvas = document.getElementById('canvas');
+		var can = canvas.getContext('2d');
+		var s = window.screen;
+		var w = canvas.width = s.width;
+		var h = canvas.height = s.height;
+		can.fillStyle = getRandomColor();
+		//can.font = '30px  Microsoft YaHei';
+		//can.fillText('黑客帝国', 100, 100);
+		var words = Array(300).join('1').split('');
+		
+	    $(function() {
+		    
+		});
+		
+		function getRandomColor() {
+		    var color = Math.ceil(Math.random() * 16777215).toString(16);
+			if(color.length == 5) {
+			    color = '0' + color;
+			}
+			return '#' + color;
+		}
+		
+		function getColor() {
+		    return '#' + (function(color) {
+			    return new Array(7 - color.length).join('0') + color;
+			})((Math.random() * 0x1000000 << 0).toString(16));
+		}
+		
+		setInterval(draw, 50);
+		
+		function draw() {
+		    can.fillStyle = 'rgba(0,0, 0, 0.05)';
+		    can.fillRect(0, 0, w, h);
+		    can.fillStyle = getColor();
+			words.map(function(y, n) {
+			    text = String.fromCharCode(Math.ceil(65 + Math.random() * 57));
+				x = n * 15 + 10;
+				can.fillText(text, x, y);
+				words[n] = (y > 748 + Math.random() * 484) ? 0: y + Math.ceil(Math.random() * 25);
+			});
+		}
+	</script>
+</body>
+</html>

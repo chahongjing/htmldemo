@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background:#333;}
+		
+		#iphone{width:900px;height:600px;background:url('images/bg.png');
+		    margin:100px auto 0;position:relative;}
+		#wrap{width:240px;height:360px;background:#9ff;position:absolute;
+		    left:326px;top:121px;overflow:hidden;}
+		ul{width:960px;height:360px;background:#f9f;position:absolute;}
+		ul li{width:240px;height:360px;float:left;}
+	</style>
+</head>
+<body>
+    <div id='iphone' class=''>
+		<div id='wrap' class=''>
+			<ul id='ul'>
+			    <li style='background:url(images/pic1.png)'></li>
+			    <li style='background:url(images/pic2.png)'></li>
+			    <li style='background:url(images/pic3.png)'></li>
+			    <li style='background:url(images/pic4.png)'></li>
+			</ul>
+		</div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    
+		});
+		var ul = document.getElementById('ul');
+		var lis = document.getElementsByTagName('li');
+		var disX = 0;
+		var downX = 0;
+		var i = 0;
+		var timer = null;
+		var speed = 0;
+		window.onload = function() {
+			
+			ul.onmousedown = function(e) {
+			    var e = e || window.event;
+				disX = e.clientX - ul.offLeft;
+				downX = e.clientX;
+				
+				document.onmousemove = function(e) {
+				    var e = e || window.event;
+					ul.style.left = e.clientX - disX + 'px';
+				}
+				document.onmouseup = function(e) {
+				    document.onmousemove = document.onmousedown = function() {};
+					
+				    var e = e || window.event;
+					if(e.clientX < downX) {
+					    if(i < lis.length - 1) {
+						    i++;
+						}
+					} else {
+					     if(i > 0) {
+						    i--;
+						}
+					}
+					starMove(-i * lis[0].offsetWidth);
+				}
+				return false;
+			}
+		}
+		
+		function starMove(offset){
+		    clearInterval(timer);
+			timer = setInterval(function() {
+			    speed += (offset - ul.offsetLeft) / 6;
+				speed *= 0.75;
+				console.log(speed + '|' + (offset - ul.offsetLeft));
+				if(Math.abs(speed) <= 1 && Math.abs(offset - ul.offsetLeft) <= 1) {
+				    clearInterval(timer);
+					speed = 0;
+					ul.style.left = offset + 'px';
+				} else {
+					ul.style.left = ul.offsetLeft + speed + 'px';
+				}
+			}, 30);
+		}
+	</script>
+</body>
+</html>

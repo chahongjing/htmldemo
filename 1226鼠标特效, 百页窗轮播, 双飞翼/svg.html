@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{}
+		
+		
+	</style>
+</head>
+<body>
+    <svg width='120' height='120' viewBox='0 0 120 120' version='1.1'>
+	    <circle cx='60' cy='60' r='50'></circle>
+	</svg>
+	
+	<svg width='120' height='120' viewPort='0 0 120 120' version='1.1'>
+	    <ellipse cx='60' cy='60' rx='50' ry='25' />
+	</svg>
+	
+	<svg width='120' height='120' viewBox='0 0 120 120'>
+	    <path d='M10,110 A120,120 -45 0, 1 110 10 A120, 12 -45 0, 1 10, 110'
+		    stroke='lightgrey' stroke-width='2' fill='none' id='theMotionPath'>
+		</path>
+		<circle cx='10' cy='110' r='3' fill='lightgrey'></circle>
+		<circle cx='110' cy='10' r='3' fill='lightgrey'></circle>
+		
+		<circle cx='' cy='' r='5' fill='red'>
+		    <animateMotion dur='6s' repeatCount='indefinite'>
+			    <mpath xlink:href='#theMotionPath' />
+			</animateMotion>
+		</circle>
+	</svg>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		
+		});
+	</script>
+</body>
+</html>

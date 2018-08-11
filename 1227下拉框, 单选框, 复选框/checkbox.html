@@ -1,0 +1,104 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background-color:#0c9;color:#333;}
+		
+		.checkbox-1, .checkbox-2{
+		    width:300px;margin:0 auto;padding:3% 0;background-color:#9cc;
+			text-align:center;
+		}
+		.checkbox-1 input[type=checkbox]{
+		    display:none;
+		}
+		.checkbox-1 label,.checkbox-2 label{
+		    cursor:pointer;position:relative;display:inline-block;margin-right:15px;
+		}
+		.checkbox-1 label i{
+		    display:inline-block;width:10px;height:10px;padding:9px;
+			border:1px #ccc solid;border-radius:4px;cursor:pointer;
+			background-color:#fff;color:#333;margin-right:10px;overflow:hidden;
+			position:absolute;font-style:normal;
+		}
+		.checkbox-1 label span{display:inline-block;line-height:30px;margin-left:35px;
+		    text-align:left;
+		}
+		.checkbox-1 label i:after{
+		    content: '√';font-family: Microsoft YaHei;color:#fff;background-color:#399;
+			width:26px;height:26px;line-height:26px;position:absolute;
+			left:1px; top:1px;border-radius:4px;text-align:center;
+			transform:translateY(-30px);-webkit-transform:translateY(-30px);transition:0.2s ease-in;
+		}
+		.checkbox-1 [type=checkbox]:checked + label i:after{
+		    transform:translateY(0);-webkit-transform:translateY(0);transition:0.2s ease-out;
+		}
+		.checkbox-1 [type=checkbox]:disabled + label span{
+		    color:#888;
+		}
+		
+		.checkbox-2{
+		    width:400px;margin: 20px auto 0;padding:3% 0;background-color:#fc9;
+			text-align:center;}
+		.checkbox-2 input[type=checkbox]{
+		    display:none;
+		}
+		.checkbox-2 label i{
+		    position:absolute;display:inline-block;width:68px;height:34px;border:1px #999 solid;
+			background-color:#fafafa;border-radius:18px;transition:0.2s ease-in;
+		}
+		.checkbox-2 label i:after{
+		    content:'';position:absolute;left:1px;top:1px;width:30px;
+			height:30px;border:1px #aaa solid;border-radius:18px;background-color:#eee;
+			transition:0.2s ease-in;
+		}
+		.checkbox-2 label span{display:inline-block;line-height:37px;margin-left:75px;
+		    text-align:left;
+		}
+		.checkbox-2 [type=checkbox]:checked + label i{
+		    background-color:#3c6;
+		}
+		.checkbox-2 [type=checkbox]:disabled + label span{
+		    color:#888;
+		}
+		.checkbox-2 [type=checkbox]:checked + label i:after{
+		    left:35px;background-color:#ccc;
+		}
+	</style>
+</head>
+<body>
+    <div id='' class='checkbox-1'>
+	    <input type='checkbox' name='checkbox-1' id='checkbox-1' />
+		<label for='checkbox-1' title='游泳' id='a'><i></i><span>游泳</span></label>
+	    <input type='checkbox' name='checkbox-1' id='checkbox-2' />
+		<label for='checkbox-2'><i></i><span>看书</span></label>
+	    <input type='checkbox' name='checkbox-1' id='checkbox-3' />
+		<label for='checkbox-3'><i></i><span>打游戏</span></label>
+	</div>
+    <div id='' class='checkbox-2'>
+	    <input type='checkbox' name='checkbox-2' id='checkbox-4' />
+		<label for='checkbox-4'><i></i><span>游泳</span></label>
+	    <input type='checkbox' name='checkbox-2' id='checkbox-5' />
+		<label for='checkbox-5'><i></i><span>看书</span></label>
+	    <input type='checkbox' name='checkbox-2' id='checkbox-6' />
+		<label for='checkbox-6'><i></i><span>打游戏</span></label>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		   $('#a').click();
+		});
+	</script>
+</body>
+</html>
