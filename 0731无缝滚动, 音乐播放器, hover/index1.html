@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+	<link href="css/reset.css" rel="stylesheet" type="text/css">
+	<style> 
+	    *{font-family:"Microsoft YaHei"}
+	    html,body{height:100%;}
+        body{background:url(images/bg.jpg);background-position:-524px 0;}
+        .yybw{
+		    width:536px;height:524px;
+			margin:140px auto 0;background:url(images/yybw.png);
+			position:relative;
+		}
+		.zsy{
+		    position:absolute;left:60px;top:62px;
+		}
+		.jdy{
+		    width:415px;height:396px;position:absolute;left:50%;top:50%;
+			margin-top:-203px;margin-left:-207px;
+		}
+		.jdy.zq{
+		    -webkit-animation:zq 30s infinite linear;
+		}
+		@-webkit-keyframes zq{
+		    from{-webkit-transform:rotate(0deg)}
+		    to{-webkit-transform:rotate(360deg)}
+		}
+		.box{
+		    width:415px;height:415px;position:absolute;left:50%;top:68px;
+			margin-left:-209px;
+		}
+		.box .name{
+		    color:white;margin:45px auto 0;text-align:center;
+		}
+		.box .gm{margin:25px auto 0;text-align:center;font-size:24px;color:#3ff;}
+		.box .tx{
+		    width:120px;height:120px;border-radius:50%;top:50%;left:50%;position:absolute;
+			margin-top:-60px;margin-left:-60px;
+		}
+		.box .tx.zqq{
+		    -webkit-animation:zqq 5s infinite linear;
+		}
+		@-webkit-keyframes zqq{
+		    from{-webkit-transform:rotate(0deg)}
+		    to{-webkit-transform:rotate(360deg)}
+		}
+		.box .bf{
+		    width:54px;height:54px;border-radius:50%;top:50%;left:50%;position:absolute;
+			margin-top:-27px;margin-left:-27px;
+		}
+		.box .ht{
+		    text-align:center;padding-top:33px;
+		    background:url(images/ht.png) no-repeat center top;
+			width:42px;height:20px;display:block;position:absolute;left:150px;
+			bottom:45px;color:#fff;text-decoration:none;
+		}
+		.box .qg{
+		    width:42px;height:20px;display:block;position:absolute;left:218px;
+			bottom:45px;color:#fff;text-decoration:none;
+		    text-align:center;padding-top:33px;display:block;
+		    background:url(images/next.png) no-repeat center top;
+		}
+	</style>
+</head>
+<body>
+    <div class="yybw">
+	    <img src="images/zsy.png" class="zsy" />
+		<div class="jdy">
+		    <img src="images/yyjd.png" />
+		</div>
+		<div class="box">
+		    <p class="name">王菲</p>
+		    <p class="gm">因为爱情</p>
+			<img class="tx" src="images/0.jpg" />
+			<a href="javascript:void(0)"><img class="bf" src="images/play.png" /></a>
+			<a href="#" class="ht">好听</a>
+			<a href="#" class="qg">切歌</a>
+		</div>
+	</div>
+	<audio id="player"></audio><!-- 自动播放添加autoplay属性 -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script>
+	    $(function() {
+		    var flag = false;
+			var arr = ["music/因为爱情.mp3", "music/爱你一万年.mp3", "music/海阔天空.mp3", "music/想和你去吹吹风.mp3"];
+			var currentSong = 0;
+		    $(".bf").click(function() {
+			    $(".jdy").toggleClass("zq");
+			    $(".tx").toggleClass("zqq");
+				
+				flag = !flag;
+				if($("#player").attr("src") != arr[currentSong]) {
+				    $("#player").attr("src", arr[currentSong]);
+				}
+				if(flag) {
+				    $("#player")[0].play();
+				} else {
+				    $("#player")[0].pause();
+				}
+			});
+			
+			$(".qg").click(function() {
+			    currentSong = ++currentSong % arr.length;
+				$("#player").attr("src", arr[currentSong]);
+				$("#player")[0].play();
+			});
+		});
+	</script>
+</body>
+</html>

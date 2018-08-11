@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		
+		.web{
+			width:100%;height:520px;position:relative;overflow:hidden;
+		}
+		.con{width:100%;height:520px;background:#9cf;100%;}
+		.con ul li{
+		    width:100%;height:520px;display:none;
+		}
+		.nav{
+		    height:30px;position:absolute;
+			right:105px;bottom:15px;
+		}
+		.nav ul li{
+		    width:60px;height:30px;float:left;margin-left:7px;position:relative;transition:0.5s;
+			cursor:pointer;
+		}
+		.nav ul li img{width:60px;height:100%;position:absolute;right:0;bottom:0;transition:0.5s;
+		    border:2px solid white;}
+	</style>
+</head>
+<body>
+    <div class='web'>
+	    <div class='con'>
+		    <ul>
+			    <li style='background:url(images/1.jpg) center;'></li>
+			    <li style='background:url(images/2-1.jpg) center;'></li>
+			    <li style='background:url(images/3.jpg) center;'></li>
+			    <li style='background:url(images/4.jpg) center;'></li>
+			    <li style='background:url(images/5.jpg) center;display:block;'></li>
+			</ul>
+		</div>
+		<div class='nav'>
+		    <ul>
+			    <li><img src='images/1.jpg' /></li>
+			    <li><img src='images/2-1.jpg' /></li>
+			    <li><img src='images/3.jpg' /></li>
+			    <li><img src='images/4.jpg' /></li>
+			    <li><img src='images/5.jpg' /></li>
+			</ul>
+		</div>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    $('.nav ul li').hover(function() {
+			    $(this).css({width:'130px'});
+				$(this).find('img').css({width:'130px',height:'50px'});
+			}, function() {
+			    $(this).css({width:'60px'});
+				$(this).find('img').css({width:'60px',height:'30px'});
+			});
+			$('.nav ul li').click(function() {
+			    var $this = $(this);
+			    $('.web .con ul li').eq($(this).index()).fadeIn().siblings().fadeOut();
+				setTimeout(function() {
+				    $this.css({width:'60px'});
+				    $this.find('img').css({width:'60px',height:'30px'});
+				}, 2000);
+			});
+		});
+	</script>
+</body>
+</html>

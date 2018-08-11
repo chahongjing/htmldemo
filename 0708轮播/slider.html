@@ -1,0 +1,74 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>轮播图</title>
+	<style rel="stylesheet" href="/css/jquery.mobile.min.css"></style>
+    <link rel="stylesheet" href="main.css"></link>
+</head>
+<body>
+	<div class="banner">
+	    <ul>
+		    <li><img src="images/1.png" alt="图1描述" /></li>
+		    <li><img src="images/2.jpg" alt="图2描述" /></li>
+		    <li><img src="images/3.jpg" alt="图3描述" /></li>
+		    <li><img src="images/4.jpg" alt="图4描述" /></li>
+		    <li><img src="images/5.jpg" alt="图5描述" /></li>
+		    <li><img src="images/6.jpg" alt="图6描述" /></li>
+		    <li><img src="images/7.jpg" alt="图7描述" /></li>
+		</ul>
+		<div class="bannerNum"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span class="current">7</span></div>
+		<div class="arrow">
+		    <span class="left" data-direction="-1">&lt;</span>
+			<span class="right" data-direction="1">&gt;</span>
+		</div>
+		<div class="description">asdfaf</div>
+	</div>
+	<!--<div class="myClick">
+	    点击
+	</div>
+	<div>
+	    <ul class="myUl">
+		    <li>123</li>
+		    <li>456</li>
+		</ul>
+	</div>-->
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<!--<script src="js/jquery.mobile.min.js" type="text/javascript"></script>-->
+	<script type="text/javascript">
+	    $(function() {
+		    $(".bannerNum span").click(function() {
+			    $(".banner ul li").eq($(this).index()).fadeIn(600).siblings().fadeOut(600);
+				$(this).addClass("current").siblings().removeClass("current");
+				$(".description").text($(".banner ul li").eq($(this).index()).find("img").attr("alt"));
+			});
+		    $(window).resize(function() {
+			    $(".banner").height($("ul li").height());
+			});
+			$(".banner").height($("ul li").height());
+			
+			function chan(direction) {
+			    var dir = direction === -1 ? -1 : 1;
+			    var len = $(".banner ul li").length;
+				var span = $(".bannerNum span");
+				span.eq((span.filter(".current").index() + dir + len) % len).click();
+			}
+			$(".bannerNum span:eq(0)").click();
+			var sh = setInterval(chan, 4000);
+			
+			$(".banner").hover(function() {
+			    clearInterval(sh);
+			}, function() {
+			    sh = setInterval(chan, 4000);
+			});
+			
+			$(".arrow span").click(function() {chan($(this).data("direction"));});
+			
+			$(".myClick").click(function() {
+			    $(".myUl").slideToggle();
+			});
+		});
+	</script>
+</body>
+</html>

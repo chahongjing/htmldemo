@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>菜单</title>
+	<style>
+	    *{margin:0;padding:0;}
+		.header{
+		    background:#cf6;
+			border-bottom:1px solid #666;
+		}
+		.headerContent{
+		    width:900px;
+			margin: 0 auto;
+			position:relative;
+		}
+		#content{
+		    width:900px;
+			margin: 0 auto;
+		}
+		ul{
+			overflow:hidden;
+			background: -moz-linear-gradient(top, #ace, #f96);
+			background: -webkit-gradient(linear,top,from(#ace),to(#f96));
+			background: -webkit-linear-gradient(top, #ace, #f96);
+			background: -o-linear-gradient(top, #ace, #f96);
+		}
+		ul li{
+		    list-style:none;
+			float:left;
+			cursor:pointer;
+			transition:all 1s;
+		}
+		ul li a{
+		    display:block;
+			padding:1em 1em;
+			text-decoration:none;
+			color:black;
+		}
+		.liHover{
+		    color:blue;
+			background: -moz-linear-gradient(top, #ace, green);
+			background: -webkit-gradient(linear,top,from(#ace),to(green));
+			background: -webkit-linear-gradient(top, #ace, green);
+			background: -o-linear-gradient(top, #ace, green);
+		}
+		.line{
+		    height:3px;background:#60f;position:absolute;
+			top:3.1em;
+			left:0;
+		}
+		#content div{
+		    border: 1px solid #ccc;
+			border-top:0;
+			padding-top: 10px;
+			height:500px;
+		}
+	</style>
+</head>
+<body>
+    <div class="header">
+	    <div class="headerContent">
+		    <ul>
+				<li><a href="javascript:void(0)" onclick="alert(1)">推荐</a></li>
+				<li><a href="javascript:void(0)" onclick="alert(1)">设计制作</a></li>
+				<li><a href="javascript:void(0)" onclick="alert(1)">编程开发</a></li>
+				<li><a href="javascript:void(0)" onclick="alert(1)">最新发布</a></li>
+			</ul>
+			<p class="line"></p>
+		</div>
+	</div>
+    <div id="content">
+		<div >推荐内容</div>
+		<div >设计制作内容</div>
+		<div >编程开发内容</div>
+		<div >最新发布内容</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script>
+	    $(function() {
+		    $(".header ul li").hover(function() {
+			    liHover($(this).index());
+			});
+			liHover(0);
+			function liHover(i) {
+			    var $this = $(".header ul li").eq(i);
+			    var l =  $this.position().left;
+			    var w =  $this.outerWidth(true);
+			    $("p.line").stop();
+			    $("p.line").animate({left: l, width:w}, 200);
+				$("#content div").eq(i).show().siblings().hide();
+				$this.find("a").addClass("liHover").end().siblings().find("a").removeClass("liHover");
+			}
+		 })
+	</script>
+</body>
+</html>

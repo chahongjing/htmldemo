@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;display:block;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		html,body{height:100%;width:100%;}
+		
+		.banner{width:100%;height:100%;perspective:800px;position:relative;}
+		.pic{widht:100%;height:100%;background:#9ff;overflow:hidden;}
+		.pic ul{width:100%;height:100%;}
+		.pic ul li{
+		    width:100%;height:100%;background-position:center;background-size:auto:100%;
+			transition:0.5s;position:absolute;
+			left:-2000px;top:0;
+		}
+		.pic ul li.left{
+		    transform:scale(0.6) rotateY(-12deg);left:-2000px;
+		}
+		.pic ul li.right{
+		    transform:scale(0.6) rotateY(12deg);left:3000px;
+		}
+		.pic ul li.show{transform:scale(1) rotateY(0);}
+		.nav{width:124px;height:42px;position:absolute;left:50%;bottom:140px;
+		    margin-left:-62px;}
+		.prev,.next{width:41px;height:42px;background:url(images/loopimgbtn.png);float:left;}
+		.next{background:url(images/loopimgbtn.png) -41px 0 no-repeat;}
+		.txt{width:42px;height:42px;float:left;color:white;
+		    font:12px/42px 'Microsoft YaHei';font-weight:bold;text-align:center;}
+	</style>
+</head>
+<body>
+    <div class='banner'>
+	    <div class='pic'>
+		    <ul>
+			    <li style='background-image:url(images/1.jpg);left:0;' class='show current'></li>
+			    <li style='background-image:url(images/2.jpg)'></li>
+			    <li style='background-image:url(images/3.jpg)'></li>
+			    <li style='background-image:url(images/4.jpg)'></li>
+			    <li style='background-image:url(images/5.jpg)'></li>
+			</ul>
+		</div>
+		<div class='nav'>
+		    <div class='prev'></div>
+		    <div class='txt'>1/6</div>
+		    <div class='next'></div>
+		</div>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    //setInterval(autoRightPlay, 2000);
+			$('.prev').click(autoLeftPlay);
+			$('.next').click(autoRightPlay);
+		});
+		function autoLeftPlay(){
+			var li = $('ul li.current');
+		    var index = li.index();
+			var next = (index - 1 + $('ul li').length) % $('ul li').length;
+		    $('.pic ul li').eq(index).removeClass('left right').addClass('show left').removeClass('show').delay(50).animate({left:'-2000px'}, 300, function() {
+			    $('.pic ul li').eq(next).css({left:'3000px'}).animate({left:'0'}, 400, function() {
+				   setTimeout(function() {
+				        $('.pic ul li').eq(next).addClass('show current');
+						li.removeClass('current');
+				   }, 500);
+				});
+			});
+		}
+		function autoRightPlay(){
+		    var li = $('ul li.current');
+		    var index = li.index();
+			var next = (index + 1) % $('ul li').length;
+		    $('.pic ul li').eq(index).removeClass('left right').addClass('show right').removeClass('show').delay(50).animate({left:'3000px'}, 300, function() {
+			    $('.pic ul li').eq(next).css({left:'-2000px'}).animate({left:'0'}, 400, function() {
+				   setTimeout(function() {
+				        $('.pic ul li').eq(next).addClass('show current');
+						li.removeClass('current');
+				   }, 500);
+				});
+			});
+		}
+	</script>
+</body>
+</html>

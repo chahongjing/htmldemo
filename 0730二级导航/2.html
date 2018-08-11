@@ -1,0 +1,103 @@
+<html>
+<head></head>
+<meta charset="utf-8" />
+<style type="text/css">
+    *{margin:0;padding:0;}
+	ul li{list-style:none;}
+	#sub_nav{
+	    width:990px;height:270px;border:1px solid #666;
+		margin:100px auto 0;
+	}
+	#sub_nav .content{
+	    width:740px;height:270px;background:#f9f;
+		float:left;
+	}
+	#sub_nav .hov_nav{
+	    width:230px;height:270px;
+		float:right;
+	}
+	#sub_nav .hov_nav li{
+	    width:230px;height:44px;border-bottom:1px dashed #f09;
+		line-height:44px;text-align:center;position:relative;
+	}
+	#sub_nav .hov_nav li:nth-child(1){
+	    background:url(images/1.png) no-repeat 36px 8px;
+	}
+	#sub_nav .hov_nav li:nth-child(2){
+	    background:url(images/1.png) no-repeat 36px -23px;
+	}
+	#sub_nav .hov_nav li:nth-child(3){
+	    background:url(images/1.png) no-repeat 36px -54px;
+	}
+	#sub_nav .hov_nav li:nth-child(4){
+	    background:url(images/1.png) no-repeat 36px -85px;
+	}
+	#sub_nav .hov_nav li:nth-child(5){
+	    background:url(images/1.png) no-repeat 36px -116px;
+	}
+	#sub_nav .hov_nav li:nth-child(6){
+	    background:url(images/1.png) no-repeat 36px -147px;
+	}
+	
+	.content .content_1{
+	    width:740px;height:270px;border:1px solid red;display:none;
+	}
+	.content .content_1:nth-child(1){display:block;}
+	#sub_nav .hov_nav li span{
+	    width:0;height:0;border-width:8px;border-style:solid;
+		border-color:transparent #63f transparent transparent;
+		display:none;position:absolute;top:13px;left:-16px;
+	}
+	#sub_nav .hov_nav li.hov_li{
+	    background:#fb88af url(images/1.png) no-repeat 36px 8px;
+	}
+</style>
+<body>
+    <div id="sub_nav">
+	    <div class="content">
+		    <div class="content_1">
+			    <img src="images/bg1.jpg" />
+			</div>
+		    <div class="content_1">
+			    <img src="images/bg2.jpg" />
+			</div>
+		    <div class="content_1">
+			    <img src="images/bg3.jpg" />
+			</div>
+		    <div class="content_1">
+			    <img src="images/bg1.jpg" />
+			</div>
+		    <div class="content_1">
+			    <img src="images/bg2.jpg" />
+			</div>
+		    <div class="content_1">
+			    <img src="images/bg3.jpg" />
+			</div>
+		</div>
+	    <div class="hov_nav">
+		    <ul>
+			    <li class='hov_li'><span></span><font>居家/母婴</font></li>
+			    <li><span></span><font>面部护理</font></li>
+			    <li><span></span><font>彩妆香氛</font></li>
+			    <li><span></span><font>身体护理</font></li>
+			    <li><span></span><font>鞋包配饰</font></li>
+			    <li><span></span><font>居家/母婴6</font></li>
+			</ul>
+		</div>
+	</div>
+	
+	<script src="js/jquery-1.10.2.js"></script>
+	<script>
+	    $(function() {
+		    var index = 0;
+		    $(".hov_nav ul li").hover(function() {
+			    $(this).find("span").show().end().siblings().find("span");
+			    $(this).addClass("hov_li").siblings().removeClass("hov_li");
+				$("#sub_nav .content_1").eq($(this).index()).show().siblings().hide();
+			}, function() {
+			    $(this).find("span").hide();
+			});
+		});
+	</script>
+</body>
+</html>
