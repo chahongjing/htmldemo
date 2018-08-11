@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{}
+		
+		#clock{
+		    stroke:black;stroke-linecap:round;fill:#3cf;
+		}
+		#face{
+		    stroke-width:3px;
+		}
+		#ticks{stroke-width:2px;}
+		#numbers{font-family:Gabriola;font-size:12px;text-anchor:middle;
+		    stroke:none;fill:black;}
+		#hourHand{stroke-width:3px;stroke:black;}
+		#minuteHand{stroke-width:2px;stroke:#66f;}
+		#secondHand{stroke-width:1px;stroke:#f00;}
+	</style>
+</head>
+<body>
+    <svg id='clock' viewBox='0 0 100 100' width='500' height='500'>
+	    <circle id='face' cx='50' cy='50' r='45' />
+		<g id='ticks'>
+		    <line x1='50' y1='5.000' x2='50.00' y2='10.00' />
+		    <line x1='72.50' y1='11.03' x2='70.00' y2='15.36' />
+		    <line x1='88.97' y1='27.50' x2='84.64' y2='30.00' />
+			
+		    <line x1='95' y1='50' x2='90.00' y2='50.00' />
+		    <line x1='88.97' y1='72.5' x2='84.64' y2='70.00' />
+		    <line x1='72.5' y1='88.87' x2='70.00' y2='84.64' />
+			
+		    <line x1='50' y1='95' x2='50.00' y2='90.00' />
+		    <line x1='27.5' y1='88.07' x2='30.00' y2='84.64' />
+		    <line x1='11.03' y1='72.5' x2='15.34' y2='70.00' />
+			
+		    <line x1='5' y1='50.00' x2='10.00' y2='50.00' />
+		    <line x1='11.07' y1='27.5' x2='15.36' y2='30.00' />
+		    <line x1='27.5' y1='11.03' x2='30.00' y2='15.86' />
+		</g>
+		<g id='numbers'>
+		    <text x='50' y='21'>12</text>
+		    <text x='85' y='53'>3</text>
+		    <text x='50' y='88'>6</text>
+		    <text x='15' y='53'>9</text>
+		</g>
+		<g id='hands'>
+		    <line id='hourHand' x1='50' y1='50' x2='50' y2='35' style='transform:rotate(30, 50, 50)' />
+		    <line id='minuteHand' x1='50' y1='50' x2='50' y2='25' />
+		    <line id='secondHand' x1='50' y1='50' x2='50' y2='13' />
+		</g>
+	</svg>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    setInterval(ticks, 50);
+		});
+		function ticks() {
+		    var now = new Date();
+			var milliSecond = now.getMilliseconds();
+			var second = now.getSeconds() + milliSecond / 1000;
+			var minute = now.getMinutes() + second / 60;
+			var hour = (now.getHours() % 12) + minute / 60;
+			var minuteAngle = minute * 6;
+			var secondAngle = second * 6;
+			var hourAngle = hour * 30;
+			
+			$('#hourHand').attr('transform', 'rotate(' + hourAngle + ', 50, 50)');
+			$('#minuteHand').attr('transform', 'rotate(' + minuteAngle + ', 50, 50)');
+			$('#secondHand').attr('transform', 'rotate(' + secondAngle + ', 50, 50)');
+		}
+	</script>
+</body>
+</html>

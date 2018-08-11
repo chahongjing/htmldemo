@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		html{height:100%;}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{height:100%;background:radial-gradient(#fff, #333);}
+		
+		h1{color:red;text-align:center;line-height:100px;}
+		.txt{color:red;text-align:center;font-size:20px;}
+		.wrap{width:100px;position:absolute;bottom:100px;}
+		
+		.red{left:25%;}
+		.yellow{left:50%;}
+		.black{left:75%;}
+		
+		.shadow, .ball{position:absolute;border-radius:50%;left:0;right:0;top:0;bottom:0;margin:auto;}
+		
+		.ball{height:60px;width:60px;color:#fff;font-size:18px;
+		    line-height:60px;text-align:center;
+			animation:ball 1s cubic-bezier(0.165,0.540,0.840,1) infinite;}
+		.shadow{width:75px;height:25px;background:#000;bottom:-100px;
+		    animation:shadow 1s cubic-bezier(0.165,0.540,0.840,1) infinite;}
+		
+		.red .ball{background:radial-gradient(#f00,#ff0);animation-delay:-200ms;}
+		.yellow .ball{background:radial-gradient(#ff0,#f00);animation-delay:0ms;}
+		.black .ball{background:radial-gradient(#fff,#000);animation-delay:200ms;}
+		
+		.red .shadow{animation-delay:-200ms;}
+		.yellow .shadow{animation-delay:0ms;}
+		.black .shadow{animation-delay:0ms;}
+		/*@keyframes ball{
+		    0%{bottom:0;}
+			50%{bottom:400px;}
+			100%(bottom:0;)
+		}*/
+		@keyframes ball{
+		    0%{transform:translateY(0px);}
+		    50%{transform:translateY(-150px);}
+		    100%{transform:translateY(0px);}
+		}
+		@keyframes shadow{
+		    0%{opacity:0.2;transform:scale(1);}
+		    50%{opacity:0.1;transform:scale(0.8);}
+		    100%{opacity:0.2;transform:scale(1);}
+		}
+	</style>
+</head>
+<body>
+    <h1>你的梦想从这里起航</h1>
+	<div class='txt'>这里是一些描述性的文字!</div>
+    <div id='' class='wrap red'>
+	    <div class='shadow'></div>
+	    <div class='ball'>HTML</div>
+	</div>
+    <div id='' class='wrap yellow'>
+	    <div class='shadow'></div>
+	    <div class='ball'>JS</div>
+	</div>
+    <div id='' class='wrap black'>
+	    <div class='shadow'></div>
+	    <div class='ball'>CSS</div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background:#ccc;}
+		
+		#main{width:800px;height:600px;margin:100px auto 0;background:white;position:relative;overflow:hidden;}
+		#main div{position:absolute;border:1px solid rgba(225,225,225,0.8);}
+	</style>
+</head>
+<body>
+	<input type='button' id='btn' value='切 换' />
+    <div id='main' class=''>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    var option = {};
+		option.width = 800;
+		option.height = 600;
+		option.wCount = 5;
+		option.hCount = 4;
+		option.imageList = ['images/14.jpg', 'images/12.jpg', 'images/13.jpg'];
+		option.current = 0;
+		perWidth = option.width * 1.0 / option.wCount;
+		perHeight = option.height * 1.0 / option.hCount;
+	    $(function() {
+		    $('#btn').click(function() {
+			    var i = parseInt(Math.random() * 100) % 3;
+			    switch(i) {
+				    case 0:
+					    goNext();
+						break;
+				    case 1:
+					    goNext1();
+						break;
+				    case 2:
+					    goNext2();
+						break;
+					default:
+					    goNext();
+				}
+			});
+		    for(var i = 0; i < option.imageList.length; i++) {
+			    createDiv(i);
+			}
+		});
+		
+		function createDiv(_i) {
+		    var html = [];
+			for(var i = 0; i < option.hCount; i++) {
+			    for(var j = 0; j < option.wCount; j++) {
+			        html.push('<div class="slider_' + _i + '_' + i + '_' + j + '" data-r="' + i + '" data-c="' + j + '"></div>');
+			    }
+			}
+			var divs = $(html.join(''));
+			
+		    divs.css({width:perWidth - 2 + 'px',height: perHeight - 2 + 'px', 'background': 'url("' + option.imageList[_i] + '") no-repeat'});
+			if(_i > 0) {
+			    divs.css({'opacity': '0'});
+			}
+			for(var i = 0; i < option.hCount; i++){
+				for(var j = 0; j < option.wCount; j++){
+				    divs.eq(i * option.wCount + j).css({'background-position': -perWidth * j + 'px -' + perHeight * i + 'px',
+				        'left':perWidth * j + 'px','top':perHeight * i + 'px'}).delay(1);
+				}
+			}
+			
+			$('#main').append(divs);
+		}
+		
+		function goNext() {
+		    var source = option.current;
+		    option.current++;
+			option.current = option.current % option.imageList.length;
+			var divs = $('#main div');
+			for(var i = 0; i < option.hCount; i++){
+			    for(var j = 0; j < option.wCount; j++){
+				    var count = i * option.wCount + j;
+					divs.filter('.slider_' + source + '_' + i + '_' + j).delay(100 * count).animate({'opacity': 0}, 100);
+					divs.filter('.slider_' + option.current + '_' + i + '_' + j).delay(100 * count).animate({'opacity': 1}, 100);
+				}
+			}
+		}
+		function goNext1() {
+		    var source = option.current;
+		    option.current++;
+			option.current = option.current % option.imageList.length;
+			var divs = $('#main div');
+			for(var i = 0; i < option.hCount; i++){
+				for(var j = 0; j < option.wCount; j++){
+				    var count = i * option.wCount + j;
+					divs.filter('.slider_' + source + '_' + i + '_' + j).delay(200 * count).animate({'opacity': 0, 'left': (perWidth * j + 100) + 'px'}, 200, function() {
+					    $(this).css({'left': (perWidth * $(this).data('c')) + 'px', top:(perHeight * $(this).data('r')) + 'px'});
+					});
+					divs.filter('.slider_' + option.current + '_' + i + '_' + j).delay(200 * count).css({'left':(perWidth * j - 100) + 'px'}).animate({'opacity': 1, 'left':(perWidth * j) + 'px'}, 200);
+				}
+			}
+		}
+		function goNext2() {
+		    var source = option.current;
+		    option.current++;
+			option.current = option.current % option.imageList.length;
+			var divs = $('#main div');
+			var tick = 0;
+			for(var i = 0; i < option.wCount; i++){
+				for(var j = 0; j < option.hCount; j++){
+				    var count = j * option.wCount + i;
+					tick++;
+					divs.filter('.slider_' + source + '_' + j + '_' + i).delay(200 * tick).animate({'opacity': 0, 'top': (perHeight * j + 100) + 'px'}, 200, function() {
+					    $(this).css({'left': (perWidth * $(this).data('c')) + 'px', 'top': (perHeight * $(this).data('r')) + 'px'});
+					});
+					divs.filter('.slider_' + option.current + '_' + j + '_' + i).delay(200 * tick).css({'top':(perHeight * j - 100) + 'px'}).animate({'opacity': 1, 'top':(perHeight * j) + 'px'}, 200);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

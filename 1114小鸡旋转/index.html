@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background:#27283b;}
+		
+		.bird{width:200px;height:200px;margin:100px auto;position:relative;}
+		.bird .big,.bird .middle,.bird .small,.bird .smaller{border:100px solid transparent;position:absolute;left:0;top:0;
+		    border-top-color:blue;border-radius:100%;border-color:transparent transparent #d72929 #db3e3e;
+			transform:rotateZ(45deg);transition:1s;}
+		.bird .middle{border-width:80px;border-color:transparent transparent white white;
+		    position:absolute;top:20px;left:20px;}
+		.bird .small{
+		    border-width:80px;border-color:transparent transparent transparent #FCD04D;
+		    position:absolute;top:20px;left:20px;transform:rotateZ(135deg);
+		}
+		.bird .smaller{
+		    border-width:50px;position:absolute;top:50px;left:50px;
+			transform:rotateZ(-45deg);border-color:transparent transparent #F8A604 transparent;
+		}
+		.bird .middle:before{
+		    content:"";display:block;border:10px solid black;border-radius:100%;position:absolute;
+			top:-5px;left:-40px;transition:0.8s;
+		}
+		.bird .big.next{transform:rotateZ(225deg);border-color:transparent transparent #1fe8b6 #16d7a7;}
+		.bird .middle.next{transform:rotateZ(225deg);border-color:transparent transparent white white;}
+		.bird .small.next{transform:rotateZ(45deg);border-color:transparent transparent transparent #f8d245;}
+		.bird .smaller.next{transform:rotateZ(45deg);border-color:transparent transparent #A3A3A3 transparent;}
+		
+		.bird .middle.next:before{
+		    content:"";display:block;border:10px solid black;border-radius:100%;position:absolute;
+			top:25px;left:-10px;transition:0.8s;
+		}
+	</style>
+</head>
+<body>
+    <div id='' class='bird'>
+	    <div class='big'></div>
+	    <div class='middle'></div>
+	    <div class='small'></div>
+	    <div class='smaller'></div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    $('.bird').hover(function() {
+			    $(this).find('div').addClass('next');
+			}, function() {
+			    $(this).find('div').removeClass('next');
+			});
+		});
+	</script>
+</body>
+</html>

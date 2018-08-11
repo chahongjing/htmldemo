@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background:url(images/bj.jpg) no-repeat fixed;background-size:cover;}
+		
+		
+		#head a.logo img{width:100%;height:100%;}
+		#head .nav a:hover{background-position:0 -40px;}
+		
+		#head .nav a:nth-child(1){background-image:url(images/1.png)}
+		#head .nav a:nth-child(2){background-image:url(images/2.png)}
+		#head .nav a:nth-child(3){background-image:url(images/3.png)}
+		#head .nav a:nth-child(4){background-image:url(images/4.png)}
+		#head .nav a:nth-child(5){background-image:url(images/5.png)}
+		#head .nav a:nth-child(6){background-image:url(images/6.png)}
+		#head .nav a:nth-child(7){background-image:url(images/7.png)}
+		#head .nav a:nth-child(8){background-image:url(images/8.png)}
+		
+		@media screen and (min-width:980px){
+		    #head{width:100%;height:70px;}
+		    #head a.logo{position:fixed;left:50px;top:0;width:80px;height:80px;border:2px solid #fecb00;
+		        border-radius:100%;}
+		    #head .nav{width:870px;height:70px;background:white;margin:0 auto;}
+		    #head .nav a{width:50px;height:40px;margin:15px 25px;display:block;float:left;
+		        background-position:cener;background-repeat:no-repeat;}
+		}
+		@media screen and (min-width:640px) and (max-width:980px) {
+		    #head{width:100px;height:560px;}
+		    #head a.logo{position:fixed;left:50px;top:0;width:80px;height:80px;border:2px solid #fecb00;
+		        border-radius:100%;}
+			#head .nav{width:100px;height:560px;background:white;margin-top:85px;margin-left:42px;}
+		    #head .nav a{width:50px;height:40px;margin:15px 25px;display:block;float:left;
+		        background-position:cener;background-repeat:no-repeat;}
+		}
+		@media screen and (max-width:640px){
+		    #head{width:256px;height:256px;position:fixed;left:20px;bottom:20px;}
+		    #head a.logo{width:80px;height:80px;position:absolute;left:0;bottom:0;right:0;top:0;
+			    margin:auto;border:2px solid #fecb00;border-radius:100%;}
+			#head div.nav{position:absolute;width:256px;height:256px;border-radius:100%;background:rgba(0,0,0,0.6);
+			    transform:scale(0.3) rotate(-180deg);opacity:0;transition:0.5s;}
+			#head .nav:hover{transform:scale(1.1) rotate(0deg);opacity:1;}
+			#head .nav a{width:40px;height:40px;margin:-19px -20px;display:block;float:left;
+		        background-position:-5px 0px;background-repeat:no-repeat;position:absolute;border-radius:100%;
+				background-color:white;}
+			#head .nav a:hover{background-position:-5px -40px;}
+		}
+	</style>
+</head>
+<body>
+    <div id='head' class=''>
+	    <a href='javascript:void(0)' class='logo'>
+		    <img src='images/logo.png' />
+		</a>
+		<div class='nav'>
+		    <a href='javascript:void(0)' class='menu'></a>
+		    <a href='javascript:void(0)' class='menu'></a>
+		    <a href='javascript:void(0)' class='menu'></a>
+		    <a href='javascript:void(0)' class='menu'></a>
+		    <a href='javascript:void(0)' class='menu'></a>
+		    <a href='javascript:void(0)' class='menu'></a>
+		    <a href='javascript:void(0)' class='menu'></a>
+		    <a href='javascript:void(0)' class='menu'></a>
+		</div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    var menu = document.querySelectorAll('.menu');
+			var length = menu.length;
+			for(var i = 0; i < length; i++) {
+			    menu[i].style.left = (50 - 35 * Math.cos(-0.5 * Math.PI - 2 * (1 / length) * i * Math.PI)).toFixed(4) + '%';
+			    menu[i].style.top = (50 + 35 * Math.sin(-0.5 * Math.PI - 2 * (1 / length) * i * Math.PI)).toFixed(4) + '%';
+			}
+		});
+	</script>
+</body>
+</html>

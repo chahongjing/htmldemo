@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		
+		#box{width:1017px;height:523px;background:red;margin:100px auto;position:relative;}
+		#box div.bg{
+		    width:1017px;height:523px;position:absolute;left:0;top:0;transition:0.8s;
+		}
+		#box div.bg2{opacity:0;}
+		#box ul{position:absolute;top:;left;0;}
+		#box ul li{
+		    width:337px;height:173px;border:1px solid #ddd;float:left;position:relative;
+		}
+		#box ul li div{
+		    color:white;font-weight:bold;margin-top:10px;margin-left:10px;
+		}
+		#box ul li img{position:absolute;left:0;top:0;opacity:0;transition:0.8s;}
+		#box ul li:hover img{opacity:1;}
+		#box ul li:nth-child(1) img{opacity:1;}
+	</style>
+</head>
+<body>
+    <div id='box'>
+	    <div class='bg bg1'>
+	        <img src='images/bg1.jpg' width='1017' height='523' />
+	    </div>
+	    <div class='bg bg2'>
+	        <img src='images/bg2.jpg' width='1017' height='523' />
+	    </div>
+	    <ul>
+			<li>
+				<div>
+					<p>青春</p>
+					YOUNTH
+				</div>
+				<img src='images/logo.png' />
+			</li>
+			<li>
+				<div>
+					<p>青春</p>
+					YOUNTH
+				</div>
+				<img src='images/1 (2).jpg' width='337' height='173' />
+			</li>
+			<li>
+				<div>
+					<p>青春</p>
+					YOUNTH
+				</div>
+				<img src='images/2 (2).jpg' width='337' height='173' />
+			</li>
+			<li>
+				<div>
+					<p>青春</p>
+					YOUNTH
+				</div>
+				<img src='images/3 (2).jpg' width='337' height='173' />
+			</li>
+			<li>
+				<div>
+					<p>青春</p>
+					YOUNTH
+				</div>
+				<img src='images/4 (2).jpg' width='337' height='173' />
+			</li>
+			<li>
+				<div>
+					<p>青春</p>
+					YOUNTH
+				</div>
+				<img src='images/5 (2).jpg' width='337' height='173' />
+			</li>
+			<li>
+				<div>
+					<p>青春</p>
+					YOUNTH
+				</div>
+				<img src='images/6.jpg' width='337' height='173' />
+			</li>
+			<li>
+				<div>
+					<p>青春</p>
+					YOUNTH
+				</div>
+				<img src='images/7.jpg' width='337' height='173' />
+			</li>
+			<li>
+				<div>
+					<p>青春</p>
+					YOUNTH
+				</div>
+				<img src='images/8.jpg' width='337' height='173' />
+			</li>
+		</ul>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    setInterval(function() {
+			    $('div.bg').toggleClass('bg2');
+			}, 3000);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background:url(images/1.jpg) no-repeat; background-size:cover;
+		    min-height:650px;
+		}
+		
+		.main{
+		    width:900px;height:350px;margin:150px auto 0;background:url(images/bg.jpg) no-repeat;
+			position:relative;
+		}
+		.upload{
+		    position:absolute;left:35px;bottom:50px;width:355px;height:80px;background:white;
+			padding:10px;border-radius:6px;
+		}
+		.upload label.lblUpload{
+		    width:80px;height:80px;background:url(images/img.png) no-repeat center;display:inline-block;cursor:pointer;
+			float:left;border:1px solid #ccc;border-right:none;
+		}
+		.upload a{background:url(images/img.png) no-repeat center;display:block;width:80px;height:80px;
+		    float:left;border:1px solid #ccc;border-right:none;}
+		.upload a input{width:80px;height:80px;opacity:0;cursor:pointer;}
+		.upload textarea{border:1px solid #ccc;float:left;width:248px;height:60px;padding:10px;}
+		.upload .img{
+		    position:absolute;top:32px;right:58px;width:285px;height:285px;border-radius:12px;
+			    overflow:hidden;text-align:center;
+		}
+	</style>
+</head>
+<body>
+    <div id='' class='main'>
+	    <div class='upload'>
+		    <input type='file' style='display:none;' id='fileUpload' />
+		    <label class='lblUpload' for='fileUpload'></label>
+			<textarea></textarea>
+		</div>
+		<div></div>
+	</div>
+	
+	<div id='' class='main'>
+	    <div class='upload'>
+		    <a href='javascript:void(0)'><input type='file' /></a>
+			<textarea></textarea>
+		</div>
+		<div></div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		html,body{width:100%;height:100%;background:url(images/12.jpg);background-size:cover;}
+		
+		.box{width:10%;height:100%;}
+		.box .left,.box .right{width:50%;height:100%;position:fixed;top:0;z-index:9999;}
+		.box .left{background:url(images/2.jpg);left:0;background-size:100% 140%;
+		    animation:b_left 4s;animation-fill-mode:forwards;/*保留最后一帧状态*/animation-delay:2s;/*延迟3s*/}
+		.box .right{background:url(images/3.jpg);right:0;background-size:100% 140%;
+		    animation:b_right 4s;animation-fill-mode:forwards;/*保留最后一帧状态*/animation-delay:2s;/*延迟3s*/}
+		@keyframes b_left{
+		    from{left:0px;}
+			to{left:-50%;}
+		}
+		@keyframes b_right{
+		    from{right:0px;}
+			to{right:-50%;}
+		}
+		.yin{
+		    width:100%;height:230px;position:fixed;bottom:120px;
+			background:url(images/bj.png) repeat-x center;
+		}
+		.yin ul{width:1050px;margin:0 auto;}
+		.yin ul li{
+		    height:230px;float:left;list-style:none;position:relative;margin-right:40px;
+			background-repeat:no-repeat;animation:b_yin 4s infinite;animation-fill-mode:forwards;
+		}
+		.yin ul li:last-child{margin-right:0;}
+		.yin ul li:nth-child(1){width:146px;background-image:url(images/1.png);animation-delay:1s;}
+		.yin ul li:nth-child(2){width:201px;background-image:url(images/2.png);animation-delay:2s;}
+		.yin ul li:nth-child(3){width:196px;background-image:url(images/3.png);animation-delay:3s;}
+		.yin ul li:nth-child(4){width:186px;background-image:url(images/4.png);animation-delay:4s;}
+		.yin ul li:nth-child(5){width:154px;background-image:url(images/5.png);animation-delay:5s;}
+		
+		@keyframes b_yin{
+		    0%{top:0;background-position:bottom left;}
+		    20%{top:-50px;background-position:bottom left;}
+		    40%{top:0;background-position:bottom left;}
+		    60%{top:-50px;background-position:bottom left;}
+		    80%{top:0;background-position:bottom left;}
+		    100%{top:-50%;background-position:bottom left;}
+		}
+	</style>
+</head>
+<body>
+    <div id='' class='box'>
+	    <div class='left'></div>
+	    <div class='right'></div>
+	</div>
+	<div class='yin'>
+	    <ul>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		</ul>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    
+		});
+	</script>
+</body>
+</html>

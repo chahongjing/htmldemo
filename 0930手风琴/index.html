@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		
+		#list{width:1174px;height:450px;background:#ff0;margin:100px auto 0;position:relative;
+		    overflow:hidden;}
+		#list ul li{width:538px;height:450px;position:absolute;left:0;top:0;}
+		#list ul li .pic{width:538px;height:405px;background:green;position:relative;overflow:hidden;}
+		#list ul li .pic .bg{width:106px;height:405px;background:rgba(0,0,0,0.5);position:absolute;
+		    left:0;top:0;transition:0.5s;}
+		#list ul li .pic .text{position:absolute;left:0;bottom:-50px;height:50px;line-height:50px;
+		    color:white;background:rgba(0,0,0,0.5);width:100%;transition:0.5s;}
+		#list ul li .nav{width:538px;height:45px;background:black;line-height:50px;}
+		#list ul li .nav a{margin-right:68px;color:#666;transition:0.5s;}
+		#list ul li.hover .pic .bg{width:0;}
+		#list ul li.hover .pic .text{bottom:0;}
+		#list ul li.hover .nav a{color:white;}
+	</style>
+</head>
+<body>
+    <div id='list'>
+	    <ul>
+		    <li class='hover'>
+				<div class='pic'>
+				    <img src='images/pic1.jpg' />
+					<div class='bg'></div>
+					<p class='text'>晒黑只是一时, 光老化才是夏日变丑元凶</p>
+				</div>
+				<div class='nav'>
+				    <a href='javascript:void(0)'>服饰</a>
+				    <a href='javascript:void(0)'>封面明星故事</a>
+				    <a href='javascript:void(0)'>上半年手袋放榜</a>
+				    <a href='javascript:void(0)'>应季单</a>
+				</div>
+			</li>
+		    <li class=''>
+				<div class='pic'>
+				    <img src='images/pic2.jpg' />
+					<div class='bg'></div>
+					<p class='text'>晒黑只是一时, 光老化才是夏日变丑元凶</p>
+				</div>
+				<div class='nav'>
+				    <a href='javascript:void(0)'>服饰</a>
+				    <a href='javascript:void(0)'>封面明星故事</a>
+				    <a href='javascript:void(0)'>上半年手袋放榜</a>
+				    <a href='javascript:void(0)'>应季单</a>
+				</div>
+			</li>
+		    <li class=''>
+				<div class='pic'>
+				    <img src='images/pic3.jpg' />
+					<div class='bg'></div>
+					<p class='text'>晒黑只是一时, 光老化才是夏日变丑元凶</p>
+				</div>
+				<div class='nav'>
+				    <a href='javascript:void(0)'>服饰</a>
+				    <a href='javascript:void(0)'>封面明星故事</a>
+				    <a href='javascript:void(0)'>上半年手袋放榜</a>
+				    <a href='javascript:void(0)'>应季单</a>
+				</div>
+			</li>
+		    <li class=''>
+				<div class='pic'>
+				    <img src='images/pic4.jpg' />
+					<div class='bg'></div>
+					<p class='text'>晒黑只是一时, 光老化才是夏日变丑元凶</p>
+				</div>
+				<div class='nav'>
+				    <a href='javascript:void(0)'>服饰</a>
+				    <a href='javascript:void(0)'>封面明星故事</a>
+				    <a href='javascript:void(0)'>上半年手袋放榜</a>
+				    <a href='javascript:void(0)'>应季单</a>
+				</div>
+			</li>
+		    <li class=''>
+				<div class='pic'>
+				    <img src='images/pic5.jpg' />
+					<div class='bg'></div>
+					<p class='text'>晒黑只是一时, 光老化才是夏日变丑元凶</p>
+				</div>
+				<div class='nav'>
+				    <a href='javascript:void(0)'>服饰</a>
+				    <a href='javascript:void(0)'>封面明星故事</a>
+				    <a href='javascript:void(0)'>上半年手袋放榜</a>
+				    <a href='javascript:void(0)'>应季单</a>
+				</div>
+			</li>
+		    <li class=''>
+				<div class='pic'>
+				    <img src='images/pic6.jpg' />
+					<div class='bg'></div>
+					<p class='text'>晒黑只是一时, 光老化才是夏日变丑元凶</p>
+				</div>
+				<div class='nav'>
+				    <a href='javascript:void(0)'>服饰</a>
+				    <a href='javascript:void(0)'>封面明星故事</a>
+				    <a href='javascript:void(0)'>上半年手袋放榜</a>
+				    <a href='javascript:void(0)'>应季单</a>
+				</div>
+			</li>
+		    <li class=''>
+				<div class='pic'>
+				    <img src='images/pic7.jpg' />
+					<div class='bg'></div>
+					<p class='text'>晒黑只是一时, 光老化才是夏日变丑元凶</p>
+				</div>
+				<div class='nav'>
+				    <a href='javascript:void(0)'>服饰</a>
+				    <a href='javascript:void(0)'>封面明星故事</a>
+				    <a href='javascript:void(0)'>上半年手袋放榜</a>
+				    <a href='javascript:void(0)'>应季单</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    $('#list ul li').hover(function() {
+				hoverI($(this).index());
+			}, function() {
+			
+			});
+			init();
+			hoverI(0);
+		});
+		function init() {
+			for(var i = $('#list ul li').length - 1; i > -1; i--){
+			    $('#list ul li').eq(i).css({left: (i * 106) +'px'});
+			}
+		}
+		function hoverI(index) {
+			$('#list ul li').eq(index).addClass('hover').siblings().removeClass('hover');
+			for(var i = $('#list ul li').length - 1; i > -1; i--){
+				if(i > index) {
+					$('#list ul li').eq(i).stop(true).animate({left: ((i - 1) * 106 + 538) +'px'}, 500);
+				} else {
+					$('#list ul li').eq(i).stop(true).animate({left: (i * 106) + 'px'}, 500);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

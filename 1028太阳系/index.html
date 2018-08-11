@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{}
+		
+		#canvas{background:black;}
+	</style>
+</head>
+<body>
+    <canvas id='canvas' width='1000' height='1000'>
+	    您的浏览器不支持canvas
+	</canvas>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    var cxt = document.getElementById('canvas').getContext('2d');
+		function drawPath(){
+		    // 画轨道
+		    for(var i = 0; i < 8; i++) {
+			    // 开始路径
+			    cxt.beginPath();
+			    // 设置路径
+				cxt.arc(500, 500, (i + 1) * 50, 0, 360, false);
+			    // 结束路径
+				cxt.closePath();
+			    // 触笔颜色
+				cxt.strokeStyle = '#333';
+				// 绘制
+				cxt.stroke();
+			}
+		}
+		drawPath();
+		
+		function Star(x, y, radius, cycle, beginColor, endColor) {
+		    this.x = x;
+		    this.y = y;
+		    this.radius = radius;
+		    this.cycle = cycle;
+		    this.beginColor = beginColor;
+		    this.endColor = endColor;
+			this.time = 0;
+			
+			if (typeof this.draw != "function") {
+				Star.prototype.draw = function() {
+				    // 保存之前的画布内容
+				    cxt.save();
+					// 设置异次元空间的圆心
+					cxt.translate(500, 500);
+					// 设置星体的旋转角度
+					cxt.rotate(this.time * (360 / this.cycle) * Math.PI / 180);
+					cxt.beginPath();
+					cxt.arc(this.x, this.y, this.radius, 0, 360, false);
+					cxt.closePath();
+					this.color = cxt.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+			        this.color.addColorStop(0, this.beginColor);
+			        this.color.addColorStop(1, this.endColor);
+			        cxt.fillStyle = this.color;
+			        // 填充
+			        cxt.fill();
+					// 恢复之前的画布
+					cxt.restore();
+					this.time++;
+				}
+			}
+		}
+		
+		var sun = new Star(0, 0, 20, 0, '#f00', '#f90');
+		
+		var Mear = new Star(0, -50, 10, 87.7, '#a69697', '#5c3e40');
+		var Venus = new Star(0, -100, 15, 224.7, '#c4bbac', '#1f1315');
+		var Earth = new Star(0, -150, 20, 365.24, '#78b1e8', '#5c3e40');
+		var Mars = new Star(0, -200, 10, 686.98, '#cec9b6', '#76422d');
+		var Jupeiter = new Star(0, -250, 10, 4332.589, '#c0a48e', '#322222');
+		var Saturn = new Star(0, -300, 10, 10759.5, '#f7f9e3', '#5c4533');
+		var Uranus = new Star(0, -350, 10, 30799.095, '#a7e1e5', '#19243a');
+		var Neptune = new Star(0, -400, 10, 164.8 * 365, '#0661b2', '#1e3b73');
+		
+		function play() {
+		    cxt.clearRect(0, 0, 1000, 1000);
+			drawPath();
+			sun.draw();
+			Mear.draw();
+			Venus.draw();
+			Earth.draw();
+			Mars.draw();
+			Jupeiter.draw();
+			Saturn.draw();
+			Uranus.draw();
+			Neptune.draw();
+		}
+		setInterval(play, 10);
+	</script>
+</body>
+</html>

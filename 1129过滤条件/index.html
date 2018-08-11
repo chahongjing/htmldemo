@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;color:blue;}
+		body{}
+		
+		.select{
+		    width:679px;margin:50px auto 0;border:1px solid #ddd;
+		}
+		.select ul > li {
+		    clear:both;padding:4px 0px;overflow:hidden;
+		}
+		li span,li dl{float:left;}
+		li dl{display:inline;}
+		li dl dt,li dl dd{display:inline;border:1px solid transparent;}
+		ul span,dl a{display:inline-block;padding:5px 8px 5px 8px;margin:2px 0;}
+		ul span{width:10%;text-align:right;}
+		ul dl{width:87%;}
+		dl a:hover{background:#f7ea8c;color:#f80;}
+		dt.select a{background:#f80;color:#fff;}
+		dd.select a{background:#f80;color:#fff;}
+		a i{font-style:normal;display:inline-block;margin:0 4px;font-size:14px;font-weight:bold;}
+		dl a:hover i{color:black;}
+		.filter a{margin-right:0;padding-right:0;}
+		ul > li.hr{padding:0 5px;padding-top:5px;}
+		ul > li.hr hr{border-bottom:1px solid #ddd;}
+		li.filter dl dd{margin-right:5px;}
+		p.tip{height:23px;color:#666;line-height:36px;font-size:14px;}
+	</style>
+</head>
+<body>
+    <div id='' class='select'>
+	    <ul>
+		    <li><span>上装:</span>
+			    <dl>
+				    <dt class=''><a href='javascript:void(0)'>全部</a></dt>
+				    <dd><a href='javascript:void(0)'>针织衫</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				    <dd><a href='javascript:void(0)'>T恤</a></dd>
+				    <dd><a href='javascript:void(0)'>羽绒</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				    <dd><a href='javascript:void(0)'>T恤</a></dd>
+				    <dd><a href='javascript:void(0)'>羽绒</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				    <dd><a href='javascript:void(0)'>T恤</a></dd>
+				    <dd><a href='javascript:void(0)'>羽绒</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				    <dd><a href='javascript:void(0)'>羽绒</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				    <dd><a href='javascript:void(0)'>羽绒</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				    <dd><a href='javascript:void(0)'>羽绒</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				</dl>
+			</li>
+		    <li><span>上装:</span>
+			    <dl>
+				    <dt class=''><a href='javascript:void(0)'>全部</a></dt>
+				    <dd><a href='javascript:void(0)'>针织衫</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				    <dd><a href='javascript:void(0)'>T恤</a></dd>
+				    <dd><a href='javascript:void(0)'>羽绒</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				    <dd><a href='javascript:void(0)'>T恤</a></dd>
+				</dl>
+			</li>
+		    <li><span>上装:</span>
+			    <dl>
+				    <dt class=''><a href='javascript:void(0)'>全部</a></dt>
+				    <dd><a href='javascript:void(0)'>针织衫</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				    <dd><a href='javascript:void(0)'>T恤</a></dd>
+				    <dd><a href='javascript:void(0)'>羽绒</a></dd>
+				    <dd><a href='javascript:void(0)'>毛呢外套</a></dd>
+				</dl>
+			</li>
+			<li class='hr'><hr/></li>
+			<li class='filter'>
+			    <span>已选条件:</span>
+				<dl>
+				</dl>
+			</li>
+		</ul>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    showFilter();
+		    $('li:not(.filter) dd').click(function() {
+			    $(this).toggleClass('select').siblings('dt').removeClass('select');
+				
+				showFilter();
+			});
+			
+			$('dt').click(function() {
+			    $(this).toggleClass('select');
+				if($(this).hasClass('select')) {
+				    $(this).siblings().addClass('select');
+				} else {
+				    $(this).siblings().removeClass('select');
+				}
+				showFilter();
+			});
+			
+			$('li.filter dl').on('click', 'a i', function() {
+			    var val = $(this).parent().text().replace('×', '');
+				$('a').each(function(index, item) {
+				    if($(item).text() == val){
+					    $(item).parent().removeClass('select');
+					}
+				});
+				showFilter();
+			});
+		});
+		
+		function showFilter() {
+			$('li:not(.filter) dt').each(function() {
+				if($(this).siblings('dd:not(.select)').length > 0) {
+					$(this).removeClass('select');
+				} else {
+					$(this).addClass('select');
+				}
+			});
+		    var html = [];
+		    $('li:not(.filter) dd.select').each(function() {
+			    html.push('<dd class="select"><a href="javascript:void(0)">' + $(this).text() + '<i>×</i></a></dd>');
+			});
+			var s = html.join('');
+			if(!s) {
+			    s = '<p class="tip">暂时没有选择过滤条件</p>';
+			}
+			$('li.filter dl').html(s);
+		}
+	</script>
+</body>
+</html>

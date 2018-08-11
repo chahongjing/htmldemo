@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>图片展示</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		body{
+		    background:url(images/bg.png);
+		}
+		.cont{
+		    width:650px;height:400px;margin:150px auto 0;
+			position:relative;overflow:hidden;
+		}
+		.cont ul li{
+		    width:650px;height:400px;position:absolute;
+			transition:0.7s;
+		}
+		
+		.cont ul li:nth-child(1) {background:url(images/1.png);
+			left:0px;}
+		.cont ul li:nth-child(2) {background:url(images/2.png);
+			left:40px;}
+		.cont ul li:nth-child(3) {background:url(images/3.png);
+			left:80px;}
+		.cont ul li:nth-child(4) {background:url(images/4.png);
+			left:120px;}
+		.cont ul li:nth-child(5) {background:url(images/5.jpg);
+			left:160px;}
+		
+		.cont ul li p{
+		    width:400px;height:40px;
+			background:rgba(0,0,0,0.5);transform:rotate(90deg);
+			transform-origin:left top;position:absolute;
+			top:0;left:40px;color:white;text-indent:100px;
+			line-height:40px;border:1px solid white;
+			cursor:pointer;transition:0.7s;
+		}
+		.cont ul li.l5.move{
+		    transform:translate(434px, -290px) rotate(-45deg);
+		}
+		.cont ul li.l5.move p{text-indent:50px;}
+		.cont ul li.l4.move{
+		    transform:translate(416px, -290px) rotate(-45deg);
+		}
+		.cont ul li.l4.move p{text-indent:90px;}
+		.cont ul li.l3.move{
+		    transform:translate(398px, -290px) rotate(-45deg);
+		}
+		.cont ul li.l3.move p{text-indent:130px;}
+		.cont ul li.l2.move{
+		    transform:translate(380px, -290px) rotate(-45deg);
+		}
+		.cont ul li.l2.move p{text-indent:170px;}
+		.cont ul li.l1.move{
+		    transform:translate(331px, -290px) rotate(-45deg);
+		}
+		.cont ul li.l1.move p{text-indent:210px;}
+	</style>
+</head>
+<body>
+    <div class='cont'>
+	    <ul>
+		    <li class=''><p>第一层</p></li>
+		    <li class='l2'><p>第二层</p></li>
+		    <li class='l3'><p>第三层</p></li>
+		    <li class='l4'><p>第四层</p></li>
+		    <li class='l5'><p>第五层</p></li>
+		</ul>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    $('ul li p').click(function() {
+			    var li = $(this).closest('li');
+			    var index = li.index();
+				$('ul li:gt(' + index + ')').addClass('move');
+				$('ul li:lt(' + index + ')').removeClass('move');
+				li.removeClass('move');
+				
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;display:block;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		#box {
+		    width:1130px;height:560px;/*background:#f0c;*/margin:100px auto 0;
+		}
+		#box ul{
+		    overflow:hidden;
+		}
+		#box ul li{
+		    width:260px;height:260px;border:5px solid #999;float:left;
+			margin:5px;position:relative;overflow:hidden;
+		}
+		#box ul li .con{
+		    width:246px;height:246px;background:url('images/lineBg.png');
+			padding:8px;position:absolute;transition:0.8s;top:420px;
+			overflow:hidden;transform:rotate(130deg) translateY(230px);
+		}
+		#box ul li .con .text{
+		    background:rgba(0,0,0,0.5);height:186px;text-align:center;
+			padding:60px 10px 0;
+		}
+		#box ul li:hover .con{
+		    top:0;transform:rotate(0deg) translateY(0px);
+		}
+		#box ul li .con .text h3,#box ul li .con .text h4{line-height:30px;}
+		#box ul li .con .text p{line-height:25px;font-size:14px;}
+	</style>
+</head>
+<body>
+    <div id='box'>
+	    <ul>
+		    <li style='background:url(images/2.jpg)'>
+			    <div class='con'>
+				    <div class='text'>
+					    <h3>瘦身</h3>
+						<h4>七个诀窍不再嘴馋</h4>
+						<p>冬天到了, 天气一冷, 人们自然需要通过摄取食物的热量来抵御寒冷</p>
+					</div>
+				</div>
+			</li>
+		    <li style='background:url(images/3.jpg)'></li>
+		    <li style='background:url(images/4.jpg)'></li>
+		    <li style='background:url(images/5.jpg)'></li>
+		    <li style='background:url(images/6.jpg)'></li>
+		    <li style='background:url(images/7.jpg)'></li>
+		    <li style='background:url(images/8.jpg)'></li>
+		    <li style='background:url(images/9.jpg)'></li>
+		</ul>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    
+		});
+	</script>
+</body>
+</html>

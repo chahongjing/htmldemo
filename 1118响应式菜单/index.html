@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background:url(images/beige_paper.png);}
+		@font-face{
+		    font-family: 'myFont';
+			src:url(css/websymbols.woff);
+			src:url(css/websymbols.woff) format('woff'),
+			    url(css/websymbols.ttf) format('truetype');
+			font-weight:normal;
+			font-style:normal;
+		}
+		
+		.list{width:100%;height:100px;}
+		.list li{background:white;width:16%;height:100px;float:left;
+		    box-shadow:0 0 10px rgba(255,0,0,0.4);position:relative;
+			overflow:hidden;}
+		.list li .border{height:100px; width:5%;background:#fff;position:absolute;
+		    left:0;top:0;transition:0.8s;}
+		.list li .icon{
+		    font-family:'myFont';height:40px;margin:5px auto 0;font-size:24px;display:block;
+			line-height:40px;text-align:center;text-shadow:0 0 10px #ccc;transition:0.8s;
+		}
+		.list li .text{line-height:24px;text-align:center;}
+		.list li .text h2, .list li .text a{color:#333;text-shadow:0 0 10px #ccc;
+		    font-size:20px;font-weight:600;transition:0.8s;}
+	    .list li .text h3{font-size:14px;font-weight:normal;text-shadow:0 0 10px #ccc;
+		    transition:0.8s;}
+		.list li:hover{background:black;color:#3f0;}
+		.list li:hover .border{left:95%;}
+		.list li:hover a{color:#3f0;}
+		.list li:hover .icon{font-size:48px;margin:30px auto;}
+		
+		@media screen and (max-width:780px) {
+		    .list{width:160px;height:auto;}
+			.list li{width:100%;}
+			.list li div{float:left;}
+			.list li .icon{font-size:40px;margin:35px 10px;}
+			.list li .text h2,.list li .text a{font-size:16px;line-height:40px;}
+			
+			.list li:hover{background:black;color:#3f0;}
+			.list li:hover .border{left:95%;}
+			.list li:hover a{color:#3f0;}
+			.list li:hover .icon{font-size:48px;margin:30px auto;}
+		}
+	</style>
+</head>
+<body>
+    <div id='' class='list'>
+	    <ul>
+		    <li>
+			    <div class='border'></div>
+				<span class='icon'>Z</span>
+				<div class='text'>
+				    <h2><a href='#'>首页</a></h2>
+					<h3>home</h3>
+				</div>
+			</li>
+		    <li>
+			    <div class='border'></div>
+				<span class='icon'>A</span>
+				<div class='text'>
+				    <h2><a href='#'>联系我们</a></h2>
+					<h3>Contact Us</h3>
+				</div>
+			</li>
+		    <li>
+			    <div class='border'></div>
+				<span class='icon'>F</span>
+				<div class='text'>
+				    <h2><a href='#'>Html教程</a></h2>
+					<h3>Html教程</h3>
+				</div>
+			</li>
+		    <li>
+			    <div class='border'></div>
+				<span class='icon'>H</span>
+				<div class='text'>
+				    <h2><a href='#'>JavaScript</a></h2>
+					<h3>JavaScript</h3>
+				</div></li>
+		    <li>
+			    <div class='border'></div>
+				<span class='icon'>N</span>
+				<div class='text'>
+				    <h2><a href='#'>Html5 + Css3</a></h2>
+					<h3>Html5 + Css3</h3>
+				</div></li>
+		    <li>
+			    <div class='border'></div>
+				<span class='icon'>C</span>
+				<div class='text'>
+				    <h2><a href='#'>中国教育</a></h2>
+					<h3>中国教育</h3>
+				</div></li>
+		</ul>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    
+		});
+	</script>
+</body>
+</html>

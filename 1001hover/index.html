@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		
+		#web{
+		    width:100%;height:430px;background:url('images/bg_banner.jpg') center top;
+			padding-top:30px;
+		}
+		#web .content{
+		    width:990px;height:400px;margin:0px auto;background:url(images/bg.gif) center top;
+			position:relative;
+		}
+		#web .content ul li{
+		    width:245px;height:400px;float:left;text-align:center;color:#8e8e8e;cursor:pointer;
+		}
+		#web .content ul li .pic{
+		    width:102px;height:150px;margin:80px auto 20px;
+		}
+		#web .content .con{
+		    width:990px;height:400px;position:absolute;top:0;left:0;display:none;
+		}
+		#web .content .but{
+		    width:80px;height:28px;position:absolute;bottom:10px;right:10px;background:#50a0dc;
+			color:#fff;text-align:center;line-height:28px;border-radius:5px;display:none;
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+    <div id='web'>
+	    <div class='content'>
+			<ul>
+			    <li>
+				   <div class='pic' style='background:url(images/bg_index.gif) 0px 0px;'>
+				   </div>DNF, LOL, CF
+				</li>
+			    <li>
+				   <div class='pic' style='background:url(images/bg_index.gif) -102px 0;'>
+				   </div>微信安全, 公众平台
+				</li>
+			    <li>
+				   <div class='pic' style='background:url(images/bg_index.gif) -204px 0;'>
+				   </div>财付通, 微信支付
+				</li>
+			    <li>
+				   <div class='pic' style='background:url(images/bg_index.gif) -306px 0;'>
+				   </div>QQ空间, QQ软件
+				</li>
+			</ul>
+			<div style='clear:both;'></div>
+			<div class='con' style='background:url(images/game.png)'></div>
+			<div class='con' style='background:url(images/jy.png)'></div>
+			<div class='con' style='background:url(images/wx.png)'></div>
+			<div class='con' style='background:url(images/zf.png)'></div>
+			<div class='but'>返 回</div>
+		</div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    $('#web .content ul li').click(function() {
+			    $('#web .content .con').eq($(this).index()).fadeIn();
+				$('#web .content .but').fadeIn();
+			});
+			
+			$('#web .content .but').click(function() {
+				$('#web .content .con').fadeOut();
+				$('#web .content .but').fadeOut();
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{}
+		
+		body{background:#ddd;}
+		#web{
+		    width:393px;height:480px;background:white;position:fixed;
+			left:50%;margin-left:-196px;top:50%;margin-top:-250px;padding:0 10px;
+		}
+		#web .title{width:393px;height:50px;background:url(images/baidu_logo.png) no-repeat left center;
+		    line-height:50px;text-indent:32px;font-weight:600;cursor:move;
+			border-bottom:1px dotted #999;
+		}
+		#web .title i{
+		    width:24px;height:24px;display:block;background:url(images/pass_login_icons_retina_bd1d5228.png) no-repeat -85px -54px;
+			float:right;margin:15px 5px;cursor:pointer;
+		}
+		#web .title i:hover{
+		    background-position:-85px -85px;
+		}
+		#web a.kj{
+		    display:block;width:100px;height:16px;background:url(images/baidu_Phone.png) no-repeat left -14px;
+			text-indent:15px;font-size:12px;text-decoration:none;color:#666;margin-left:290px;margin-top:20px;
+		}
+		#web a.kj:hover{
+		    color:blue;text-decoration:underline;
+		}
+		#web form p input.text{width:99%;height:40px;}
+		#web form p{margin-top:20px;font-size:12px;}
+		#web form p a{float:right;}
+		#web form p input.check{vertical-align:middle;}
+		#web form p input.submit{width:99%;height:40px;border:none;background:#4490f7;
+		    color:white;font-size:20px;
+		}
+		#web hr{margin-top:60px;margin-bottom:10px;}
+		#web ul li{
+		    float:left;width:48px;height:48px;margin:10px 7px;cursor:pointer;
+		}
+		#web ul li a{
+		    width:100%;height:100%;display:block;background:url(images/pass_login_icons_retina_bd1d5228.png) no-repeat;
+		}
+	</style>
+</head>
+<body>
+    <div id='web' class=''>
+	    <div class='title' id='title'>
+		登录百度账号
+		<i></i>
+		</div>
+		<a class='kj' href='javascript:void(0)'>短信快捷登录</a>
+		<form>
+			<p><input type='text' class='text' placeholder='手机/邮箱/用户名'></p>
+			<p><input type='password' class='text' placeholder='密码'></p>
+			<p><input type='checkbox' class='check' />下次登录<a href='javascript:void(0)'>忘记密码?</a></p>
+			<p><input type='submit' class='submit' value='提 交' /></p>
+			<p><a href='javascript:void(0)'>立即注册</a></p>
+		</form>
+		<hr/>
+		<p>可以使用以下方式登录</p>
+		<ul>
+			<li><a style='background-position:-128px 0px;'></a></li>
+			<li><a style='background-position:-178px 0px;'></a></li>
+			<li><a style='background-position:-224px 0px;'></a></li>
+			<li><a style='background-position:-270px 0px;'></a></li>
+			<li><a style='background-position:-178px -48px;'></a></li>
+		</ul>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    init(document.getElementById('title'));
+		});
+		
+		var i = 0, t = 0, y = 0;
+		var isOver = false;
+		var zIndex = 3;
+		function init(elem) {
+		    var parentDom = elem.parentNode;
+			elem.onmousedown = function(event) {
+			    var e = event || window.event;
+				x = e.clientX;
+				y = e.clientY;
+				
+				var windowWidth = document.body.clientWidth;
+				var windowHeight = document.documentElement.clientHeight;
+				var contentWidth = parentDom.offsetWidth;
+				var contentHeight = parentDom.offsetHeight;
+				
+				l = parseInt(parentDom.offsetLeft);
+				t = parseInt(parentDom.offsetTop);
+				
+				isOver = true;
+				zIndex++;
+				parentDom.style.zIndex= zIndex;
+				document.onmousemove = function(event) {
+				    if(isOver){
+					    var e = event || window.event;
+						var newLeft = l + e.clientX - x;
+						var newTop = t + e.clientY - y;
+						newLeft = newLeft < 0 ? 0 : newLeft;
+						newTop = newTop < 0 ? 0 : newTop;
+						
+						newLeft = newLeft > windowWidth - contentWidth ? windowWidth - contentWidth : newLeft;
+						newTop = newTop > windowHeight - elem.clientHeight ? windowHeight - elem.clientHeight : newTop;
+						parentDom.style.left = newLeft + 'px';
+						parentDom.style.top = newTop + 'px';
+						parentDom.style.marginLeft = '0px';
+						parentDom.style.marginTop = '0px';
+					}   
+				}
+				document.onmouseup = function() {
+				    isOver = false;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

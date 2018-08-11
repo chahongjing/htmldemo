@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;}
+		li a{color:white;}
+		body{background:url(images/logo.jpg) top center;}
+		
+		#box{width:40px;height:600px;background:#333;position:fixed;right:0;}
+		#box .top{height:146px;background:#c9f;position:relative;}
+		#box .top .show{width:190px;position:absolute;top:0;left:-190px;}
+		#box .commonTools{width:40px;heght:400px;}
+		#box .commonTools ul li{width:40px;height:47px;background:#333 url(images/common-silder.png);position:relative;
+		    }
+		#box .commonTools ul li:nth-child(1){background-position:-120px -94px;}
+		#box .commonTools ul li:nth-child(2){background-position:-120px -47px;}
+		#box .commonTools ul li:nth-child(3){background-position:-120px 0;}
+		#box .commonTools ul li:nth-child(4){background-position:-80px 0;}
+		
+		#box .commonTools ul li:hover{background-color:orange;}
+		#box .commonTools ul li:nth-child(1):hover{background-position:-40px -141px;}
+		#box .commonTools ul li:nth-child(2):hover{background-position:-40px -94px;}
+		#box .commonTools ul li:nth-child(3):hover{background-position:-40px -47px;}
+		#box .commonTools ul li:nth-child(4):hover{background-position:0 -46px;}
+		
+		
+		#box .commonTools ul li:hover a div{animation:mymove 300ms;right:40px;opacity:1;display:block;}
+		@keyframes mymove{
+		    0%{right:120px;opacity:0;}
+		    99%{right:35px;opacity:0.80;}
+		    100%{right:40px;opacity:1;}
+			
+		}
+		
+		#box .commonTools ul li a{display:block;height:100%;width:100%;}
+		#box .commonTools ul li a div{display:none;padding:14px 15px;position:absolute;
+		    top:0px;right:100px;background:#636363;text-align:center;opacity:0;}
+		#box .commonTools ul li a div p{display:block;font-size:14px;color:white;}
+		#box .commonTools ul li a div i{display:block;width:0;height:0;border:5px solid transparent;
+		    border-left-color:#636363;position:absolute;top:18px;right:-10px;}
+		#box .bottom{width:40px;position:absolute;right:0;bottom:0;}
+		
+		#box .bottom div{width:60px;}
+		
+		#box .bottom ul li:nth-child(1){background-position:-80px -94px;}
+		#box .bottom ul li:nth-child(2){background-position:-80px -47px;}
+		#box .bottom ul li:nth-child(3){background-position:-80px -141px;}
+		#box .bottom ul li:nth-child(1):hover{background-position:0 -141px;}
+		#box .bottom ul li:nth-child(2):hover{background-position:0 -94px;}
+		#box .bottom ul li:nth-child(3):hover{background-position:-40px 0;}
+	</style>
+</head>
+<body>
+    <div id='box' class=''>
+	    <div class='top'>
+		    <img src='images/ssTPkr.jpg' />
+		    <div class='show'>
+			    <img src='images/ZsdbDe.jpg' />
+			</div>
+		</div>
+		<div class='commonTools'>
+		    <ul>
+			    <li><a href='#'>
+				    <div>
+					    <img src='images/sys.png' />
+						<p>下载旅游App</p>
+						<i></i>
+					</div>
+				</a></li>
+			    <li><a href='#'>
+				    <div>
+					    <img src='images/sys.png' />
+						<p>我的订单</p>
+						<i></i>
+					</div>
+				</a></li>
+			    <li><a href='#'>
+				    <div>
+					    <img src='images/sys.png' />
+						<p>我的评论</p>
+						<i></i>
+					</div>
+				</a></li>
+			    <li><a href='#'>
+				    <div>
+					    <img src='images/sys.png' />
+						<p>排行榜</p>
+						<i></i>
+					</div>
+				</a></li>
+			</ul>
+		</div>
+		<div class='commonTools bottom'>
+		    <ul>
+			    <li><a href='#'>
+				    <div>
+						<p>在线反馈</p>
+						<i></i>
+					</div>
+				</a></li>
+				
+			    <li><a href='#'>
+				    <div>
+						<p>在线客服</p>
+						<i></i>
+					</div>
+				</a></li>
+				
+			    <li><a href='#'>
+				    <div>
+						<p>我的收藏</p>
+						<i></i>
+					</div>
+				</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    /*$(function() {
+		    $('.commonTools ul li').hover(function() {
+			    $(this).find('div').css({'z-index': 10,'display':'block'}).stop(true).animate({right: '35px', opacity: 1}, 250, function() {
+				    $(this).stop(true).animate({right: '40px'}, 30);
+				});
+			}, function() {
+			    $(this).find('div').stop(true).animate({right: '100px', opacity: 0}, 100, function() {
+				    $(this).css({'z-index': -1,'display':'none'});
+				});
+			});
+		});*/
+	</script>
+</body>
+</html>
