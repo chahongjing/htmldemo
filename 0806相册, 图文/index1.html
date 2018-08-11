@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+    <style>
+	    *{padding:0;margin:0;}
+		img{border:none;cursor:pointer;}
+		body{
+		    background:rgba(0,0,0,0.2) url(images/b2.jpg);
+		}
+		.main{
+		    width:600px;height:600px;border:5px solid white;
+			margin:100px auto 0;
+		}
+		.main img{
+		    width:200px;height:300px;float:left;display:block;
+		}
+		.hide{display:none;}
+		.bg{
+		    width:100%;height:100%;background:rgba(0,0,0,0.5);
+			position:fixed;top:0;left:0;
+		}
+		.show{
+		    width:500px;height:750px;border:5px solid #f00;
+			position:absolute;top:0;left:0;right:0;
+			margin:0 auto;
+		}
+		.bt_lt{
+		    position:absolute;left:-38px;top:50%;
+		}
+		.bt_rt{
+		    position:absolute;right:-38px;top:50%;
+		}
+	</style>
+</head>
+<body>
+    <div class='main'>
+	    <img src='images/1-1.jpg' data-bigImage='images/1.jpg' />
+	    <img src='images/2-1.jpg' data-bigImage='images/2.jpg' />
+	    <img src='images/3-1.jpg' data-bigImage='images/3.jpg' />
+	    <img src='images/1-1.jpg' data-bigImage='images/1.jpg' />
+	    <img src='images/2-1.jpg' data-bigImage='images/2.jpg' />
+	    <img src='images/3-1.jpg' data-bigImage='images/3.jpg' />
+	</div>
+	<div class='bg hide'>
+	    <div class="show">
+		    <img id='image' style='width:100%;height:100%;' />
+		    <img src='images/nav_cho.png' class="bt_lt" />
+		    <img src='images/nav_cho.png' class="bt_rt" />
+		</div>
+	</div>
+	
+	<script src='js/jquery-1.9.1.min.js'></script>
+	<script>
+	    $(function() {
+		    var length = $('.main img').length;
+		    $('.main img').click(function() {
+			    $('.bg').fadeIn('slow');
+				$(this).addClass('current').siblings().removeClass('current');
+				$('#image').attr('src', $(this).data('bigimage'));
+			});
+			
+			$('.bg').click(function() {
+			    $('.bg').fadeOut('slow')
+			});
+			
+			$('#image').click(function() {
+			    return false;
+			});
+			$('.bt_lt').click(function() {
+			    var next = $('.main img').eq(($('.main img.current').index() - 1 + length) % length);
+				next.addClass('current').siblings().removeClass('current');
+				$('#image').attr('src', next.data('bigimage'));
+			    return false;
+			});
+			$('.bt_rt').click(function() {
+			    var next = $('.main img').eq(($('.main img.current').index() + 1) % length);
+				next.addClass('current').siblings().removeClass('current');
+				$('#image').attr('src', next.data('bigimage'));
+			    return false;
+			});
+		});
+	</script>
+</body>
+</html>

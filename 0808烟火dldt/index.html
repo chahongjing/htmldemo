@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+	<meta name='Generator' content=''>
+	<meta name='Author' content=''>
+	<meta name='Keywords' content=''>
+	<meta name='Description' content=''>
+	<title>图片展示</title>
+	<style type='text/css'>
+	    *{margin:0;padding:0;font-family:'Microsoft YaHei'}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;color:white;}
+		#divFireCracker{position:fixed;height:100%;width:100%;background:rgba(0,0,0,1);
+		    overflow:hidden;
+		}
+		.firecracker{position:absolute;border-radius:100%;}
+		.flower{position:absolute;}
+	</style>
+</head>
+<body>
+    <div id='divFireCracker'></div>
+	<script src='js/jquery-1.9.1.min.js'></script>
+	<script>
+	    $(function() {
+		    $(document).click(function(e) {
+			    var div = $('<div class="firecracker"></div>');
+				div.css({width:'10px',height:'10px',background:'red'});
+				$('#divFireCracker').append(div);
+				var totalHeight = $(document).height();
+				var totalWidth = $(document).width();
+				var x = e.clientX;
+				var y = e.clientY;
+				
+				div.css({left:totalWidth / 2,top:totalHeight});
+				div.animate({top:y, left:x}, 1000, function() {
+				    $(this).remove();
+					var s_div = [];
+					for(var i = 0; i < 20; i++) {
+					    s_div[i] = $('<div class="flower"></div>');
+						s_div[i].css({width:'3px',height:'3px',background:'#' + createCoor(),
+						top:y + 'px',left:x + 'px'});
+						$('#divFireCracker').append(s_div[i]);
+						s_div[i].speedX = Math.random() * 20 - 10;
+						s_div[i].speedY = Math.random() * 20 - 10;
+					}
+					
+					setInterval(function() {
+					    for(var j = 0; j < 20; j++) {
+					        if(!s_div[j]) {continue;}
+						    s_div[j].css({left: s_div[j].position().left + s_div[j].speedX,
+							top:s_div[j].position().top + s_div[j].speedY});
+						    s_div[j].speedY++;
+							
+							if(s_div[j].position().left > totalWidth || s_div[j].position().left < 0 ||
+							    s_div[j].position().top > totalHeight){
+							    s_div[j].remove();
+								//s_div[j] = null;
+							}
+						}
+					}, 30);
+				});
+			});
+		});
+		function createCoor() {
+			return parseInt(Math.random() * 16777215).toString(16);
+		}
+	</script>
+</body>
+</html>

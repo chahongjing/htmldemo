@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>图片展示</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;color:white;}
+		body{background:url(images/bg.jpg) top center}
+		#show{
+		    width:1092px;height:430px;margin:170px auto;
+		}
+		#show .pic{
+		    width:100px;height:430px;float:left;
+		}
+		#show .txt{
+		    width:52px;height:382px;background:rgba(0,0,0,0.5);clear:both;
+			padding:24px 24px;
+		}
+		#show .p1{
+		    width:12px;font-size:12px;color:white;float:left;
+		}
+		#show .p2{
+		    width:14px;font-size:14px;color:white;float:left;
+			margin-left:15px;
+		}
+	</style>
+</head>
+<body>
+    <div id='show'>
+	    <div class='pic' style='background:url(images/1.jpg)'>
+		    <div class='txt'>
+			    <p class='p1'>作者<br />：默默的墨墨</p>
+			    <p class='p2'>我的个人之拉萨之旅｜｜故事之城</p>
+			</div>
+		</div>
+	    <div class='pic' style='background:url(images/2.jpg)'>
+		    <div class='txt'>
+			    <p class='p1'>作者<br />：默默的墨墨</p>
+			    <p class='p2'>我的个人之拉萨之旅｜｜故事之城</p>
+			</div>
+		</div>
+	    <div class='pic' style='background:url(images/3.jpg)'>
+		    <div class='txt'>
+			    <p class='p1'>作者<br />：默默的墨墨</p>
+			    <p class='p2'>我的个人之拉萨之旅｜｜故事之城</p>
+			</div>
+		</div>
+	    <div class='pic' style='background:url(images/4.jpg); width:789px;'>
+		    <div class='txt'>
+			    <p class='p1'>作者<br />：默默的墨墨</p>
+			    <p class='p2'>我的个人之拉萨之旅｜｜故事之城</p>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 作者:默默的墨墨 我的个人之拉萨之旅||故事之城 作者:美丽的的天空 征服个人项目南极-->
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    $(function() {
+			    $('.pic').hover(function() {
+				    $(this).stop(true).animate({width:'789px'}, 500).siblings().stop(true).animate({width:'100px'}, 500);
+				});
+			});
+		});
+	</script>
+</body>
+</html>

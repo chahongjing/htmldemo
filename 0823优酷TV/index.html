@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		
+		#banner{
+		    width:970px;height:270px;
+			margin:100px auto 0;position:relative;overflow:hidden;
+		}
+		.pic{
+		    width:100%;height:100%;
+		}
+		.pic ul li{
+		    width:0;height:0;position:absolute;background:black;
+		}
+		.pic ul li img{
+		    widht:100%;height:100%;opacity:0.5;
+		}
+		.pic ul li.l1{width:640px;height:100%;left:165px;top:0;z-index:10;}
+		.pic ul li.l2{width:530px;height:224px;left:440px;top:23px;z-index:9;}
+		.pic ul li.l0{width:530px;height:224px;left:0;top:23px;z-index:9;}
+		.pic ul li.l9{width:530px;height:100px;left:-200px;top:85px;z-index:8;}
+		.pic ul li.l3{width:530px;height:100px;left:640px;top:85px;z-index:8;}
+		
+		.pic ul li.l1 img{opacity:1;}
+		
+		.btn{position:absolute;left:0;top:0;z-index:100;width:100%;z-index:100;width:100%;height:100%;}
+		.btn .left,.btn .right{
+		    width:45px;height:45px;position:absolute;top:112px;
+			cursor:pointer;
+		}
+		.btn .right{right:0;}
+		.btn ul{position:absolute;left:50%;bottom:0px;margin-left:-130px;margin-bottom:10px;}
+		.btn ul li {width:20px;height:20px;box-shadow:0 0 10px #333;
+		    background:#ddd;border:2px solid #999;border-radius:100%;
+			margin:3px;color:black;transition:0.4s;line-height:20px;
+			text-align:center;font-size:12px;cursor:pointer;float:left;}
+		.btn ul li.current{
+		    box-shadow:0 0 10px black;
+		    background:#333;border:2px solid white;color:white;
+		}
+	</style>
+</head>
+<body>
+    <div id='banner'>
+		<div class='pic'>
+			<ul>
+				<li class='l1'><img src='images/1.jpg' /></li>
+				<li class='l2'><img src='images/2.jpg' /></li>
+				<li class='l3'><img src='images/3.jpg' /></li>
+				<li><img src='images/4.jpg' /></li>
+				<li><img src='images/5.jpg' /></li>
+				<li><img src='images/6.jpg' /></li>
+				<li><img src='images/7.jpg' /></li>
+				<li><img src='images/8.jpg' /></li>
+				<li class='l9'><img src='images/9.jpg' /></li>
+				<li class='l0'><img src='images/10.jpg' /></li>
+			</ul>
+		</div>
+		
+		<div class='btn'>
+		    <div class='left'><img src='images/left.png' /></div>
+			<div class='right'><img src='images/right.png' /></div>
+			<ul>
+				<li class='current'>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+				<li>7</li>
+				<li>8</li>
+				<li>9</li>
+				<li>10</li>
+			</ul>
+		</div>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/Carousel.js"></script>
+	<script>
+	    $(function() {
+			length = $('.btn ul li').length;
+			//initialCarousel();
+			
+			var c = new Carousel({
+				container:'#banner', leftButton:'.left',rightButton:'.right',
+			    liButton:'.btn ul li', currentClass:'current', callBack: showNext
+			});
+			c.autoPlay();
+		});
+		
+		function showNext(index){
+		    var currentIndex = $('.btn ul li').filter('.current').index();
+		    var offset = index - currentIndex;
+			var arrW = [], arrH = [], arrT = [], arrL = [], arrZ = [], arrO = [];
+			$('#banner .pic ul li').each(function(i) {
+				$this = $(this);
+				arrW[i] = $this.width();
+				arrH[i] = $this.height();
+				arrL[i] = $this.css('left');
+				arrT[i] = $this.css('top');
+				arrZ[i] = $this.css('z-index');
+				arrO[i] = $this.find('img').css('opacity');
+			});
+			$('#banner .pic ul li').each(function(i) {
+				var _index = (i + offset + length) % length;
+				$(this).find('img').css({'opacity':arrO[_index]});
+				$(this).css('zIndex', arrZ[_index]).stop(true).animate({
+					width: arrW[_index],
+					height: arrH[_index],
+					left: arrL[_index],
+					top: arrT[_index]
+				}, 1000);
+			});
+		}
+	</script>
+</body>
+</html>

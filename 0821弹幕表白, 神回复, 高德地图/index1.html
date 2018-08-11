@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>标题</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a, dt a, dd a{text-decoration:none;}
+		
+		body{background:#ffc;}
+		#shf{
+		    width:360px;height:170px;background:#fff;position:fixed;top:200px;right:-331px;border:1px solid #ddd;
+			transition:0.7s;z-index:10;
+		}
+		#shf .but{
+		    width:30px;height:150px;background:black;float:left;color:white;text-align:center;
+			padding-top:20px;cursor:pointer;
+		}
+		#shf.show{right:0;}
+		#shf .face{width:330px;height:170px;float:right;}
+		#shf .face ul{
+		    
+		}
+		#shf .face ul li{
+		    width:100px;height:47px;float:left;margin: 7px 0 0 8px;
+			cursor:pointer;
+		}
+		#shf .face ul li img{width:100%;height:100%;}
+		
+		#gray{
+		    width:100%;height:100%;background:rgba(0,0,0,0.5);position:fixed;top:0px;
+			left:0px;display:none;
+		}
+		#message{
+		    width:530px;height:480px;z-index:3;position:fixed;
+			top:50%;left:50%;margin-left:-265px;margin-top:-240px;display:none;
+		}
+		#message img{
+		    display:block;
+		}
+		#message .mesCon{
+		    width:530px;height:40px;
+		}
+		#message input.in{
+		    width:430px;height:40px;border:0;
+		}
+		#message input.but {
+		    width:100px;height:40px;background:#f93;cursor:pointer;color:white;
+			border:none;
+		}
+		#message .result{
+		    width:100px;height:80px;border:1px solid red;position:absolute;
+			left:0px;height:0px;
+		}
+	</style>
+</head>
+<body>
+    <div id='shf' class='gray show'>
+	    <div class='but'>百度神回复</div>
+		<div class='face'>
+		    <ul>
+			    <li><a><img src='images/bg (2).jpg' /></a></li>
+			    <li><a><img src='images/bg1.png' /></a></li>
+			    <li><a><img src='images/bg (2).jpg' /></a></li>
+			    <li><a><img src='images/bg (2).jpg' /></a></li>
+			    <li><a><img src='images/bg (2).jpg' /></a></li>
+			    <li><a><img src='images/bg (2).jpg' /></a></li>
+			    <li><a><img src='images/bg (2).jpg' /></a></li>
+			    <li><a><img src='images/bg (2).jpg' /></a></li>
+			    <li><a><img src='images/bg (2).jpg' /></a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div id='gray'></div>
+	<div id='message'>
+	    <img src='images/bg (2).jpg' />
+		<div class='mesCon'>
+		    <input type='text' class='in' /><input type='button' value='发 表' class='but' />
+		</div>
+		<div class='result'></div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    $('#shf .but').click(function() {
+			    $('#shf').toggleClass('show');
+			});
+			$('#shf .face ul li').click(function() {
+				$('#gray,#message').show();
+			    $('#message img').attr('src', $(this).find('img').attr('src'));
+				$('#message img').animate({width:'530px', height:'400px'}, 500);
+			});
+			
+			$('#message input.in').keydown(function()  {
+			    alert('切换为没有文字的图片!');
+			});
+		});
+	</script>
+</body>
+</html>

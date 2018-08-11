@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>图片展示</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		html, body{height:100%;width:100%;}
+		li{list-style-type:none;}
+		body{background:url(images/1.jpg);background-size:cover;}
+		
+		#banner{width:1000px;margin:0 auto;}
+		#banner > ul{height:50px;border:1px solid white;-webkit-perspective:600px;
+		    -webkit-transform-style:preserve-3d;}
+		#banner > ul > li{float:left;position:relative;}
+		#banner > ul > li > a{text-decoration:none;color:white;display:inline-block;
+			padding: 15px 15px;}
+		.sub{top:50px;position:absolute;width:100%;left:0;}
+		.sub li {
+		    opacity:0;transition:0.8s;width:100%;height:50px;margin:10px auto;
+		}
+		.sub li a{text-decoration:none;color:white;display:inline-block;
+			border:1px solid white;background:green;width:100%;text-align:center;height:100%;line-height:50px;}
+		
+
+		.sub li.hover{
+		    opacity:1;
+			animation:myAnimate 2s;
+			-webkit-animation: myAnimate 2s;
+		}
+		.sub li:nth-child(1){-webkit-transition-delay:250ms;}
+		.sub li:nth-child(2){-webkit-transition-delay:200ms;}
+		.sub li:nth-child(3){-webkit-transition-delay:150ms;}
+		.sub li:nth-child(4){-webkit-transition-delay:100ms;}
+		.sub li:nth-child(5){-webkit-transition-delay:50ms;}
+		.sub li:nth-child(6){-webkit-transition-delay:0ms;}
+		
+		#banner > ul > li.hover .sub li:nth-child(1){-webkit-transition-delay:0ms;}
+		#banner > ul > li.hover .sub li:nth-child(2){-webkit-transition-delay:50ms;}
+		#banner > ul > li.hover .sub li:nth-child(3){-webkit-transition-delay:100ms;}
+		#banner > ul > li.hover .sub li:nth-child(4){-webkit-transition-delay:150ms;}
+		#banner > ul > li.hover .sub li:nth-child(5){-webkit-transition-delay:200ms;}
+		#banner > ul > li.hover .sub li:nth-child(6){-webkit-transition-delay:250ms;}
+		
+		@keyframes myAnimate{
+		    0% {transform:rotateY(120deg);}
+			40% {transform:rotateY(-30deg);}
+			60% {transform:rotateY(20deg);}
+			80% {transform:rotateY(-10deg);}
+			100% {transform:rotateY(0deg);}
+		}
+	</style>
+</head>
+<body>
+    <div id='banner'>
+		<ul>
+		    <li>
+				<a href='javascript:void(0)'>第一个</a>
+				<ul class='sub'>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				</ul>
+			</li>
+			 <li>
+				<a href='javascript:void(0)'>在线教育</a>
+				<ul class='sub'>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				</ul>
+			</li>
+			 <li>
+				<a href='javascript:void(0)'>长度不一致</a>
+				<ul class='sub'>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				    <li><a href='javascript:void(0)'>这是</a></li>
+				</ul>
+			</li>
+		</ul>
+	<div>这里是内容</div>
+	</div>
+	
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    $('#banner > ul > li').hover(function() {
+			    var $this = $(this);
+			    $this.addClass('hover');
+				$this.find('li:eq(0)').addClass('hover');
+				setTimeout(function() {
+				    $this.find('li:eq(1)').addClass('hover');
+				}, 150);
+				setTimeout(function() {
+				    $this.find('li:eq(2)').addClass('hover');
+				}, 300);
+			}, function() {
+			    $(this).removeClass('hover');
+			});
+		});
+	</script>
+</body>
+</html>

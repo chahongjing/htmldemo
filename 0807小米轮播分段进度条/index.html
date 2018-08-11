@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+    <style>
+	    *{padding:0;margin:0;}
+		ul, ol{list-style:none;}
+		img{border:none;cursor:pointer;}
+		#wrap,.picList{
+		    width:1226px;height:460px;position:relative;overflow:hidden;
+		}
+		#wrap{margin:100px auto 0;}
+		.picList li{position:absolute;display:none;}
+		.btnLeft, .btnRight{width:41px;height:69px;display:block;
+		    position:absolute;top:50%;margin-top:-35px;}
+		.btnLeft{
+		    background:url(images/icon-slides.png) no-repeat -84px 0;
+			left:0;
+		}
+		.btnRight{
+		    background:url(images/icon-slides.png) no-repeat -123px 0;
+			right:0;
+		}
+		#wrap:hover .btnLeft{background:url(images/icon-slides.png) no-repeat 0 0;}
+		#wrap:hover .btnRight{background:url(images/icon-slides.png) no-repeat -41px 0;}
+		
+		#wrap ol{
+		    position:absolute;bottom:20px;right:20px;
+		}
+		#wrap ol li{
+		    width:8px;height:8px;float:left;
+			margin:0 5px;border-radius:8px;
+		    background:rgba(255,255,255,0.4);border:2px solid rgba(0,0,0,0.4);
+		}
+		#wrap ol li.active, #wrap ol li:hover{
+		    background:rgba(0,255,0,0.7);border:2px solid #333;
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+    <div id="wrap">
+		<ul class="picList">
+			<li class='current' style='display:block;'><a href="#"><img src="images/5.jpg" /></a></li>
+			<li><a href="#"><img src="images/6.jpg" /></a></li>
+			<li><a href="#"><img src="images/7.jpg" /></a></li>
+			<li><a href="#"><img src="images/8.jpg" /></a></li>
+			<li><a href="#"><img src="images/9.jpg" /></a></li>
+		</ul>
+	    
+		<a class='btnLeft' href='javascript:void(0)'></a>
+		<a class='btnRight' href='javascript:void(0)'></a>
+		
+		<ol>
+		    <li class='active'></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		</ol>
+	</div>
+	
+	<script src='js/jquery-1.9.1.min.js'></script>
+	<script>
+	    $(function() {
+		    var length = $('.picList li').length;
+			
+		    $('.btnLeft').click(function() {
+			    var index = ($('.picList li:visible').index() - 1 + length) % length;
+				$('ol li').eq(index).click();
+			});
+			
+		    $('.btnRight').click(function() {
+			    var index = ($('.picList li:visible').index() + 1) % length;
+				$('ol li').eq(index).click();
+			});
+			
+			$('ol li').click(function() {
+			    var index = $(this).index();
+				var currentIndex = $('.picList li:visible').index();
+				$(this).addClass('active').siblings().removeClass('active');
+				/*$('.picList li').eq(index).fadeIn().siblings().fadeOut();*/
+				if(index != currentIndex) {
+				    var i = index > currentIndex ? 1 : -1;
+					$('.picList li').eq(currentIndex).animate({left: -i * $('.picList li').width() + 'px'}, function() {$(this).hide();}).end()
+					.eq(index).css({left:i * $('.picList li').width() + 'px', 'display':'block'}).animate({left:0});
+				}
+			});
+			
+			function autoPlay() {
+			    $('.btnRight').click();
+			}
+			
+			sh = setInterval(autoPlay, 5000);
+			
+			$('#wrap').hover(function() {
+			    clearInterval(sh);
+			}, function() {
+			    sh = setInterval(autoPlay, 5000);
+			});
+		});
+	</script>
+</body>
+</html>

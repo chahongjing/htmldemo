@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		
+		body{
+		    background:url(images/bg.jpg);
+			background-position:center top;
+			background-repeat:no-repeat;
+			background-size:cover;
+		}
+		#list{
+		   width:1000px;height:460px;
+		   margin:100px auto 0;
+		}
+		#list .con{
+		    width:300px;height:200px;float:left;position:relative;
+			margin-left:20px;margin-top:20px;text-align:center;
+		}
+		#list .con:nth-of-type(1){ background:#d44825; }
+		#list .con:nth-of-type(2){ background:#2d8af1; }
+		#list .con:nth-of-type(3){ background:#0cc5e7; }
+		#list .con:nth-of-type(4){ background:#666; }
+		#list .con:nth-of-type(5){ background:#ff6e1a; }
+		#list .con:nth-of-type(6){ background:#64d500; }
+		#list .con p{line-height:200px;font-size:40px;color:white;
+		    font-weight:bold;transition:0.8s;}
+		#list .con img{
+		    position:absolute;opacity:0;left:0;top:0;height:100%;
+			width:100%;transition:0.8s;
+		}
+		#list .con:hover img{opacity:1;}
+		
+		#list .con:hover p{transform:scale(0.5)}
+		.rot{
+		    -webkit-animation: rot 0.7s ease-in;
+		}
+		.ztop{
+		    -webkit-animation: ztop 0.7s ease-in;
+		}
+		.sca{
+		    -webkit-animation: sca 0.7s ease-in;
+		}
+		@-webkit-keyframes rot {
+		    0%,20%,40%,60%,80%,100%{-webkit-transform-origin:top center;}
+		    0%{-webkit-transform:rotate(0deg);}
+		    20%{-webkit-transform:rotate(-20deg);}
+		    40%{-webkit-transform:rotate(15deg);}
+		    60%{-webkit-transform:rotate(-10deg);}
+		    80%{-webkit-transform:rotate(5deg);}
+		    100%{-webkit-transform:rotate(0deg);}
+		}
+		@-webkit-keyframes ztop {
+		    0%{top:0;}
+		    20%{top:20px;}
+		    40%{top:-15px;}
+		    60%{top:10px;}
+		    80%{top:-5px;}
+		    100%{top:0;}
+		}
+		@-webkit-keyframes sca {
+		    0%{-webkit-transform:scale(1);}
+		    20%{-webkit-transform:scale(1.2);}
+		    40%{-webkit-transform:scale(0.8);}
+		    60%{-webkit-transform:scale(1.1);}
+		    80%{-webkit-transform:scale(0.9);}
+		    100%{-webkit-transform:scale(1);}
+		}
+	</style>
+</head>
+<body>
+    <div id='list'>
+	    <div class='con a b c'>
+		    <p>WEB</p>
+			<img src='images/img1.png' />
+		</div>
+	    <div class='con'>
+		    <p>C#</p>
+			<img src='images/img2.png' />
+		</div>
+	    <div class='con'>
+		    <p>IOS</p>
+			<img src='images/img3.png' />
+		</div>
+	    <div class='con'>
+		    <p>Android</p>
+			<img src='images/img4.png' />
+		</div>
+	    <div class='con'>
+		    <p>HTML</p>
+			<img src='images/img5.png' />
+		</div>
+	    <div class='con'>
+		    <p>JAVA</p>
+			<img src='images/img6.png' />
+		</div>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    var arr = ['rot', 'ztop', 'sca'];
+			$('.con').hover(function() {
+			    $(this).addClass(arr[parseInt(Math.random() * 3)]);
+			}, function() {
+			    $(this).removeClass('rot ztop sca');
+			});
+		});
+	</script>
+</body>
+</html>

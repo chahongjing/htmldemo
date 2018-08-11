@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+    <style>
+	    *{padding:0;margin:0;}
+		ul{list-style:none;}
+		img{border:none;cursor:pointer;}
+		.web{
+		    width:100%;height:490px;position:relative;overflow:hidden;
+		}
+		.pic{width:100%;height:490px;background:#9ff;overflow:hidden;}
+		.pic ul li{width:100%;height:490px;display:none;}
+		.nav, .navTitle{width:960px;height:8px;position:absolute;
+		    left:50%;bottom:0;margin-left:-480px;
+		}
+		.navTitle{
+		    bottom:8px;height:30px;
+		}
+		.nav ul li,.navTitle ul li{
+		    width:239px;height:8px;float:left;margin-right:1px;
+			background:rgba(255,255,255,0.8);opacity:0.8;text-indent:4px;
+		}
+		.navTitle ul li{background:none;color:white;}
+		.nav ul li p{
+		    width:0;height:8px;background:red;
+		}
+	</style>
+</head>
+<body>
+    <div class="web">
+	    <div class='pic'>
+		    <ul>
+			    <li style='background:url(images/1.jpg) center;display:block;'></li>
+			    <li style='background:url(images/2.jpg) center;'></li>
+			    <li style='background:url(images/3.jpg) center;'></li>
+			    <li style='background:url(images/4.jpg) center;'></li>
+			</ul>
+		</div>
+		<div class='nav'>
+		    <ul>
+			    <li><p></p></li>
+			    <li><p></p></li>
+			    <li><p></p></li>
+			    <li><p></p></li>
+			</ul>
+		</div>
+		<div class='navTitle'>
+		    <ul>
+			    <li>01.</li>
+			    <li>02.</li>
+			    <li>03.</li>
+			    <li>04.</li>
+			</ul>
+		</div>
+	</div>
+	<script src='js/jquery-1.9.1.min.js'></script>
+	<script>
+	var sh;
+	    $(function() {
+		    $('.nav ul li').click(function() {
+			    clearInterval(sh);
+				sh = setInterval(autoPlay, 5000);
+			    $('.pic ul li').eq($(this).index()).fadeIn().siblings().fadeOut();
+				$('.nav li').eq($(this).index()).find('p').stop().animate({width:'100%'}, 5000)
+				.end().siblings().find('p').stop().css('width', 0);
+			});
+			
+			function autoPlay() {
+			    var index = ($('.pic ul li:visible').index() + 1 ) % $('.pic ul li').length;
+				$('.nav ul li').eq(index).click();
+			}
+			$('.nav ul li:eq(0)').click();
+			sh = setInterval(autoPlay, 5000);
+			
+			
+		});
+	</script>
+</body>
+</html>

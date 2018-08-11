@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>图片展示</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		a{text-decoration:none;color:black;}
+		#top{
+		    width:100%;height:70px;background:#30333c;
+		}
+		#main{
+		    width:100%;height:700px;background:#cf9;
+		}
+		#main #mybg{
+		    width:100%;
+		}
+		#login{
+		    width:400px;height:380px;background:rgba(255,255,255,0.8);
+			position:fixed;top:50%;left:50%;margin-left:-200px;
+			margin-top:-190px;box-shadow:0 0 20px #666;border-radius:6px;
+			
+		}
+		#login p.ti{
+		    height:60px;line-height:60px;text-indent:30px;font-size:18px;
+			color:black;
+		}
+		#login .loginCon{
+		    width:340px;height:310px;margin:0 auto;
+			border-top:1px dotted #333;
+		}
+		#login .loginCon p{
+		    margin-top:17px;overflow:hidden;
+		}
+		#login .loginCon input.txt{
+		    height:45px;width:338px;font-size:18px;border-radius:4px;
+			border:1px solid #ccc;text-indent:38px;
+			background:url(images/user.png) no-repeat 10px center;
+			line-height:45px;
+		}
+		
+		#login .loginCon label{
+		    height:45px;padding:0 20px;
+		}
+		#login .loginCon input.pwd{
+		    background-image:url(images/pwd.png);
+		}
+		#login .loginCon img.imgYzm{
+		    float:right;border:none;
+		}
+		#login .loginCon input.yzm{
+		    background-image:url(images/yzm.png);width:205px;
+			float:left;
+			clear:both;
+		}
+		#login .loginCon input.but{
+		    border:none;background:black;border-radius:3px;color:white;
+		}
+		#login .loginCon label.link,#login .loginCon input.chk{
+		    float:left;padding:0 3px;
+		}
+		#login .loginCon input.chk{
+		    margin-top:5px;
+		}
+		#login .loginCon a{float:right;}
+	</style>
+</head>
+<body>
+    <div id='top'>
+	    <img src='images/logo.jpg' />
+	</div>
+	<div id='main'>
+	    <video src='video/2.mp4' autoplay loop id='mybg'></video>
+	</div>
+	<div id='login'>
+	    <p class='ti'>登录</p>
+		<div class='loginCon'>
+		    <form>
+			    <p><input type='text' class='txt' placeholder='请输入手机或邮箱' /></p>
+				<p><input type='password' class='txt pwd' placeholder='请输入密码' /></p>
+				<p style='clear:both'><input type='text' class='txt yzm' placeholder='请输入验证码' />
+				    <img class='imgYzm' src='images/yzm2.png' />
+				</p>
+				<p><input type='button' class='txt but' value='登 录' /></p>
+				<p><a href='javascript:void(0)'>>>忘记密码</a><input class='chk' type='checkbox' id='chk' /><label class='link' for='chk'>记住密码</label></p>
+			</form>
+		</div>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    $(function() {
+		    
+		});
+	</script>
+</body>
+</html>
