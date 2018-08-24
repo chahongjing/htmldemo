@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>flex 横向纵向布局</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		html,body{width:100%;height:100%;}
+		
+		.main{background-color:#eee;display:flex;width:100%;height:100%;flex-flow:column;}
+		.head{height:80px;background-color:#eee;}
+		.body{flex:1;background-color:#ddd;display:flex;}
+		.foot{height:50px;background-color:#ccc;}
+		
+		.body .menu{width:200px;background-color:#bbb;}
+		.body .main-right{flex:1;background-color:#aaa;display:flex;flex-flow:column;}
+		
+		.body .main-right .right-content{flex:1;background-color:#999;}
+		.body .main-right .right-foot{height:50px;background-color:#888;}
+	</style>
+</head>
+<body>
+	<div class='main'>
+		<div class='head'>
+		head
+		</div>
+		<div class='body'>
+		    <div class='menu'>
+			    menu
+			</div>
+			<div class='main-right'>
+				<div class='right-content'>
+				right-content
+				</div>
+				<div class='right-foot'>
+				right-foot
+				</div>
+			</div>
+		</div>
+		<div class='foot'>
+		foot
+		</div>
+	</div>
+</body>
+</html>

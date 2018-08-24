@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title>flex 横向纵向布局</title>
+	<style type="text/css">
+	    *{margin:0;padding:0;font-family:"Microsoft YaHei"}
+		img{border:0;}
+		ul li,ol li{list-style:none;}
+		li a{text-decoration:none;color:white;}
+		html,body{width:100%;height:100%;}
+	</style>
+</head>
+<body>
+	<p>
+		<ul>
+			<li>ID选择器的特殊性值，加0,1,0,0。</li>
+			<li>类选择器、属性选择器或伪类，加0,0,1,0。</li>
+			<li>元素和伪元素，加0,0,0,1。</li>
+			<li>通配选择器*对特殊性没有贡献，即0,0,0,0。</li>
+			<li>最后比较特殊的一个标志!important（权重），它没有特殊性值，但它的优先级是最高的，为了方便记忆，可以认为它的特殊性值为1,0,0,0,0。</li>
+		</ul>
+	</p>
+	<br>
+	<p>
+		<ul>
+			<li>1 a{color: yellow;} /*特殊性值：0,0,0,1*/</li>
+			<li>2 div a{color: green;} /*特殊性值：0,0,0,2*/</li>
+			<li>3 .demo a{color: black;} /*特殊性值：0,0,1,1*/</li>
+			<li>4 .demo input[type="text"]{color: blue;} /*特殊性值：0,0,2,1*/</li>
+			<li>5 .demo *[type="text"]{color: grey;} /*特殊性值：0,0,2,0*/</li>
+			<li>6 #demo a{color: orange;} /*特殊性值：0,1,0,1*/</li>
+			<li>7 div#demo a{color: red;} /*特殊性值：0,1,0,2*/</li>
+		</ul>
+	</p>
+</body>
+</html>
