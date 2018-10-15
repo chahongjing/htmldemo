@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue基础知识(part-3)</title>
+    <link rel="stylesheet" href="assert/style/main.css">
+</head>
+
+<body>
+    <div id="app" class="container" v-cloak>
+        <!-- 示例1： -->
+        <div class="demo-part">
+            <p class="title">一、Vue.set && this.$set</p>
+            <ul>
+                <li v-for="(item,index) in data1.list" :key="index">{{item}}</li>
+            </ul>
+            <p>直接访问data1.list[0] => {{data1.list[0]}}</p>
+            <div>
+                <button @click="modifyHandler">this.data1.list[0]='乔治'</button>
+                <button @click="forceUpdateHandler">this.$forceUpdate</button>
+                <button @click="modifySetHandler">使用$set更新</button>
+                <button @click="resetData1handler">重置</button>
+            </div>
+        </div>
+        <hr />
+        <!-- 示例2： -->
+        <div class="demo-part">
+            <p class="title">二、this.$watch && computed </p>
+            <div> data2.a:{{data2.a}}</div>
+            <div> data2.b:{{data2.b}}</div>
+            <div> data2.c:{{data2.c}}</div>
+            <span>计算属性sumMessage: </span> <span>{{sumMessage}}</span>
+        </div>
+        <hr />
+        <!-- 示例3： -->
+        <div class="demo-part">
+            <p class="title">三、Vue.nextTick && this.$nextTick </p>
+            <div>
+                <button @click="getDOMSyncHandler">同步获取DOM内容</button>
+                <button @click="resetHandler">重置</button>
+                <button @click="getDOMAsyncHandler">异步获取DOM内容</button>
+            </div>
+            <div style="overflow:auto">
+                <!-- 预先绘制四个占位 -->
+                <div v-cloak class="ztree" :ref="item" v-for="(item,index) in data3.pre" :key="index">{{data3.ids[index]
+                    || '初始值-王花花'}}</div>
+            </div>
+            <p>获取DOM结果:</p>
+            <span class="result">{{data3.result}}</span>
+        </div>
+        <hr />
+
+        <!-- 示例4： -->
+        <div class="demo-part">
+            <p class="title">四、组件声明与注册</p>
+            <button @click="createComponent">new Comp3().$mount()</button>
+
+            <div style="display:flex;margin:10px 0">
+                <div>
+                    <Comp1 @btn-click="btnClickHandler"></Comp1>
+                    <Comp2 @btn-click="btnClickHandler"></Comp2>
+                </div>
+
+                <!-- <Comp3 @btn-click="btnClickHandler"></Comp3> -->
+                <div style="margin-left:20px;border:1px solid solid;background-color: aqua">
+                    <div id="comp">我是Comp3挂载的容器</div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <!-- 示例5： -->
+        <div class="demo-part">
+            <p class="title">五、发布($emit)-订阅($on)模块之间通信</p>
+            <div style="display:flex;margin:10px 0">
+                <cui-hua style="margin-right:20px"></cui-hua>
+                <da-niu></da-niu>
+            </div>
+        </div>
+        <hr />
+    </div>
+</body>
+<!-- 引入Vue视图框架 -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+<script src="lib/vue.js"></script>
+<!-- 模块之间相互的依赖关系 -->
+<script src="component/Comp1.js"></script>
+<script src="component/Comp2.js"></script>
+<script src="component/Comp3.js"></script>
+<script src="mixins/CommonActions.js"></script>
+<script src="component/CuiHua.js"></script>
+<script src="component/DaNiu.js"></script>
+<script src="js/util.js"></script>
+<script src="js/global.js"></script>
+
+<script>
+    let data1 = {
+        list: ['王花花', '李栓蛋', '王大牛', '刘翠花']
+    };
+    let data2 = {
+        a: '花花',
+        b: '牛牛',
+        c: '蛋蛋'
+    };
+    let data3 = {
+        ids: [],
+        pre: ['cnt-1', 'cnt-2', 'cnt-3', 'cnt-4'],
+        result: ''
+    };
+
+    let app = new Vue({
+        el: '#app',
+        components: { //局部注册
+            Comp1,
+            Comp2,
+            Comp3
+        },
+        data: {
+            data1,
+            data2,
+            data3,
+            message: '王花花'
+        },
+        methods: {
+            /*************************************** 示例-1 $set*************************************/
+            resetData1handler() {
+                this.data1 = {
+                    list: ['王花花', '李栓蛋', '王大牛', '刘翠花']
+                };
+            },
+            modifyHandler() {
+                this.data1.list[0] = '乔治'
+            },
+            forceUpdateHandler() {
+                this.$forceUpdate();
+            },
+            modifySetHandler() {
+                this.$set(this.data1.list, 1, '佩奇')
+            },
+            /**************************** 示例-3 $nextTick*****************************/
+            resetHandler() {
+                this.data3.ids = [];
+                this.data3.result = '';
+            },
+            getDOMSyncHandler() {
+                this.resetHandler();
+                //产生四个id 修改响应数据
+                Array.from({
+                    length: 4
+                }).forEach(() => {
+                    this.data3.ids.push(createUniqueId())
+                });
+                //debugger 查看响应数据已经发生变化,但DOM树未渲染
+                //同步获取 DOM内容
+                let res = [];
+                this.data3.ids.forEach((item, index) => {
+                    let tmp = this.$refs[this.data3.pre[index]] && this.$refs[this.data3.pre[index]][0]
+                        .innerText;
+                    if (!!tmp) {
+                        res.push(tmp)
+                    }
+                })
+                this.data3.result = res.join(',');
+            },
+            getDOMAsyncHandler() {
+                this.resetHandler();
+                //产生四个id 修改响应数据
+                Array.from({
+                    length: 4
+                }).forEach(() => {
+                    this.data3.ids.push(createUniqueId())
+                });
+                let res = [];
+                this.$nextTick(() => {
+                    //异步获取 DOM内容
+                    this.data3.ids.forEach((item, index) => {
+                        let tmp = this.$refs[this.data3.pre[index]][0].innerText;
+                        if (!!tmp) {
+                            res.push(tmp)
+                        }
+                    })
+                    this.data3.result = res.join(',');
+                });
+            },
+            /**************************** 示例-4 组件声明及注册 ***************************************/
+            btnClickHandler(payload) {
+                window.alert(payload.passMessage);
+            },
+            createComponent() {
+                //extend返回组件的[构造器函数]
+                let Comp = Vue.extend(Comp3);
+                //手动的挂载组件
+                new Comp().$mount('#comp');
+            }
+        },
+        computed: {
+            sumMessage: function () {
+                //必须带
+                return [this.data2.a, this.data2.b, this.data2.c].join('-');
+            },
+        },
+        watch: {
+            //这里需要注意不能使用箭头函数
+            'data2.a': function (newVal, oldVal) {
+                window.alert(`watch 监听到变化 data2.a 新值 :  ${data2.a}`);
+                setTimeout(() => {
+                    console.log('do something async');
+                }, 200);
+            }
+        }
+
+    });
+</script>
+
+</html>
