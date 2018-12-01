@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>export,import学习</title>
+    </head>
+    <body>
+        <h1>如下是export,import输出</h1>
+		<div id='msg'></div>
+		
+		<script type='module'>
+		    // 注意此方式不能直接打开运行，需要在服务器中运行，否则会有跨域问题报错
+		    import {num, foo} from './scripts/myexport.js';
+			document.getElementById('msg').innerText = num + '_' + foo();
+		</script>
+    </body>
+</html>
