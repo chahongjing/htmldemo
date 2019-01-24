@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>draggable</title>
+<style>
+li{width:100px;padding:3px 10px;border:1px solid #555;}
+.sortable-ghost{border:1px solid green;background-color:rgba(255,255,255,0.1);opacity:0.5}
+.sortable-drag{display:block;border:1px solid red;}
+.ab{border:1px solid green;opacity:0.5;}
+</style>
+<script src='sortable.js'></script>
+</head>
+<body>
+<ul id="items">
+    <div></div>
+    <li data-id='1'>item 1</li>
+    <li data-id='2'>item 2</li>
+    <li data-id='3'>item 3</li>
+</ul>
+<ul id="items1">
+    <div></div>
+    <div></div>
+    <li data-id='1'>item 1</li>
+    <li data-id='2'>item 2</li>
+    <li data-id='3'>item 3</li>
+</ul>
+</body>
+</html>
+<script>
+var el = document.getElementById('items');
+var sortable = Sortable.create(el,{
+    group: 'abc',
+	filter: " > li",
+    ghostClass: "sortable-ghost",
+    dragClass: "sortable-drag",
+    onEnd: function(evt){
+	    console.log('onEnd' + evt);
+	},
+	onMove:function(evt, originalEvent) {
+	    console.log('onMove' + evt);
+		var id = evt.dragged.getAttribute('data-id');
+		var targetId = evt.related.getAttribute('data-id');
+		if(id == 2 && targetId == 3) return false;
+	}
+});
+var el = document.getElementById('items1');
+var sortable = Sortable.create(el,{
+    group: 'abc',
+	filter: " > li",
+    ghostClass: "sortable-ghost",
+    dragClass: "sortable-drag",
+    onEnd: function(evt){
+	    console.log('onEnd' + evt);
+	},
+	onMove:function(evt, originalEvent) {
+	    console.log('onMove' + evt);
+		var id = evt.dragged.getAttribute('data-id');
+		var targetId = evt.related.getAttribute('data-id');
+		if(id == 2 && targetId == 3) return false;
+	}
+});
+</script>
