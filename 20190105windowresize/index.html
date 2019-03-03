@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="Generator" content="">
+	<meta name="Author" content="">
+	<meta name="Keywords" content="">
+	<meta name="Description" content="">
+	<title></title>
+	<style type="text/css">
+	    
+	</style>
+</head>
+<body>
+    
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script>
+	    function resize1() {
+		    console.log('resize1');
+		}
+	    function resize2() {
+		    console.log('resize2');
+		}
+	    function resize3() {
+		    console.log('resize3');
+		}
+	    function resize4() {
+		    console.log('resize4');
+		}
+		
+		handleEvent(document.body, 'resize', [resize1, resize2], 'add');
+		//handleEvent(document.body, 'resize', resize1, 'remove');
+		
+		function handleEvent(bom, eventType, funcList, type) {
+    if(!funcList) return;
+    var eventListener;
+    if(type == 'remove') {
+      eventListener = bom.removeEventListener || bom.detachEvent;
+    } else {
+      eventListener = bom.addEventListener || bom.attachEvent;
+    }
+    eventType = (window.addEventListener ? '' : 'on') + eventType;
+    if(typeof(funcList) == 'function') {
+          eventListener(eventType, funcList);
+    } else if(Array.isArray(funcList)) {
+        for(var i = 0; i < funcList.length; i++) {
+          eventListener(eventType, funcList[i]);
+      }
+    }
+  }
+	</script>
+</body>
+</html>
