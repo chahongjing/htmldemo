@@ -1,0 +1,34 @@
+<html>
+<head>
+<style>
+	html,body{width:100%;height:100%;margin:0;padding:0;}
+	.parent{
+		display:flex;
+		flex-direction: column;
+		width:100%;height:100%;
+	}
+
+	.child1{
+		flex:1; /*这个无效*/
+		position:relative;
+	}
+	.child2{
+		width:100%;flex:2; /*这个无效*/
+	}
+	/*修改如下 parent加上 position: relative; 子加上 position: absolute;*/
+	.testheight{position:absolute;width:100%;height:100%;background-color:#eee;}
+	.testcalc{height:calc(100% - 50px);width:100%;background-color:#888;}
+</style>
+</head>
+<body>
+	<div class="parent">
+		<div class="child1">
+			<div class='testheight'>
+				<div class='testcalc'></div>
+			</div>
+		</div>
+		<div class="child2">
+		</div>
+	</div>
+</body>
+</html>
